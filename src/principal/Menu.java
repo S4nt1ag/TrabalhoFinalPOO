@@ -2,74 +2,61 @@ package principal;
 
 import java.util.Scanner;
 
-public  class Menu
+public class Menu
 
 {
 
 	public int escolha = 0;
 	String cpf;
 	String senha;
-	
-	
+
 	Scanner read = new Scanner(System.in);
 
 	public void ChamaMenu()
 
 	{
-		
-		
-		
-		
+
 		System.out.println("--------------------------------------------------------------");
 		System.out.println("--------------------- Sistema Bancário JK  -------------------");
 		System.out.println("--------------------------------------------------------------\n");
 
-		System.out.println("Digite seu CPF: \n");
+		System.out.print("Digite seu CPF: \n");
 		cpf = read.next();
 
-		System.out.println("Entre com sua senha: ");
+		System.out.print("Entre com sua senha: ");
 		senha = read.next();
+		menuPrincipal();
 	}
-		
-		  public void menuPrincipal(){
-			  
-		  
-		  if(this.cpf == "cliente" && senha == "cliente") {
-		  
-		  menuCliente();
-		  
-		  
-		  }else if(this.cpf == "gerente" && this.senha == "gerente" ) {
-		  
-		  menuGerente();
-		  
-		  }else if(this.cpf == "diretor" && this.senha == "diretor")
-		  
-		  {
-		  
-		  menuDiretor();
-		  
-		  }else if(this.cpf == "presidente" && this.senha == "presidente") {
-		  
-		 menuPresidente(); }
-		  
-		  else {
-		  
-		  System.out.println(" Cpf ou senha não identificados ");
-		  System.out.println("Tente novamente ! "); ChamaMenu();
-		  
-		  } 
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		 
-		 
-		 
+
+	public void menuPrincipal() {
+
+		if (cpf == "cliente" && senha == "cliente") {
+
+			menuCliente();
+
+		} else if (cpf == "gerente" && senha == "gerente") {
+
+			menuGerente();
+
+		} else if (cpf == "diretor" && senha == "diretor")
+
+		{
+
+			menuDiretor();
+
+		} else if (cpf == "presidente" && senha == "presidente") {
+
+			menuPresidente();
+		}
+
+		else {
+
+			System.out.println(" Cpf ou senha não identificados ");
+			System.out.println("Tente novamente ! ");
+			ChamaMenu();
+
+		}
+
 	}
 
 	public void menuCliente() {
