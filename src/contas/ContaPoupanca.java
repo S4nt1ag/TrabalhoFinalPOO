@@ -1,10 +1,13 @@
 package contas;
 
+import java.util.Scanner;
+
 public class ContaPoupanca extends Conta {
 
+	Scanner read = new Scanner(System.in);
 	private double saldo;
 	public final double TAXA_RENDIMENTO = 0.1;
-	
+
 	public void sacar(double valor) {
 
 		if (valor <= 0) {
@@ -27,28 +30,20 @@ public class ContaPoupanca extends Conta {
 	}
 
 	public double geraRelatorioRendimento() {
-		
-		
+
 		int diasInvestidos;
 		double rendimento = 0;
 		double valorAplicado;
-		
-		
+
 		System.out.println("Qual capital será investido");
-		valorAplicado = read.next();
-		
+		double valorAplicado1 = read.nextDouble();
+
 		System.out.println("Informe a quantidade de dias que o capital ficará aplicado: ");
-		diasInvestidos = read.next();
-		
-		
-		
-		
-		rendimento = (valorAplicado * 0.022) + diasInvestidos;
-				return rendimento;
-				
-			}
-			
-		}
-		
-	
-	
+		int diasInvestidos1 = read.nextInt();
+
+		rendimento = (valorAplicado1 * 0.022) + diasInvestidos1;
+		return rendimento;
+
+	}
+
+}
