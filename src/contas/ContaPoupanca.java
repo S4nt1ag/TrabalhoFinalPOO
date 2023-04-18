@@ -36,12 +36,12 @@ public class ContaPoupanca extends Conta {
 		double valorAplicado;
 
 		System.out.println("Qual capital será investido");
-		double valorAplicado1 = read.nextDouble();
+		 valorAplicado = read.nextDouble();
 
 		System.out.println("Informe a quantidade de dias que o capital ficará aplicado: ");
-		int diasInvestidos1 = read.nextInt();
+		 diasInvestidos = read.nextInt();
 
-		rendimento = (valorAplicado1 * 0.022) + diasInvestidos1;
+		rendimento = (valorAplicado * 0.022) + diasInvestidos;
 		return rendimento;
 
 	}
