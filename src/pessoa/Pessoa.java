@@ -1,10 +1,10 @@
 package pessoa;
 
 public abstract class Pessoa {
-	protected String nome;
-	protected String cpf;
-	protected int senha;
-	protected Cargo tipo;
+	private String nome;
+	private String cpf;
+	private int senha;
+	private Cargo tipo;
 
 	public Pessoa(String nome, String cpf, int senha, Cargo tipo) {
 		super();
