@@ -2,11 +2,11 @@ package principal;
 
 import java.util.Scanner;
 
-public class Menu
+public abstract class Menu
 
 {
 
-	public int escolha;
+	public int escolha = 0;
 
 	Scanner read = new Scanner(System.in);
 	public void ChamaMenu()
@@ -69,8 +69,10 @@ public class Menu
 		
 	
 		
+		public void menuCliente(){
 		
-		do {
+				
+				do {
 
 			System.out.println("Escolha uma opção: ");
 			System.out.println("1 - Movimentações na Conta");
@@ -147,7 +149,7 @@ public class Menu
 
 
 	}
-	menuGerente();{
+	public void menuGerente(){
 		
 		do {
 
@@ -188,7 +190,7 @@ public class Menu
 		
 	}
 
-	 menuDiretor();{
+	 public void menuDiretor(){
 		 
 		 System.out.println("Escolha uma opção: ");
 			System.out.println("1 - Saldo");
@@ -231,7 +233,7 @@ public class Menu
 
 
 
-	 menuPresidente(){
+	public void menuPresidente(){
 		 
 		
 			 
