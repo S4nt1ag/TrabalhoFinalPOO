@@ -1,18 +1,16 @@
 package pessoa;
 
-public class Funcionario extends Pessoa {
+import java.util.HashMap;
 
-	private String cargo;
+public abstract class Funcionario extends Pessoa {
 
-	public Funcionario(String nome, String cpf, Integer senha, String email, Integer telefone, String endereco, String cargo) {
-		super(nome, cpf, senha, email, telefone, endereco);
-		this.cargo = cargo;
-	}
-public String getCargo() {
-		return cargo;
+	private HashMap<String, Funcionario> listaFuncionarios = new HashMap<String, Funcionario>();
+
+	public Funcionario(String nome, String cpf, int senha, Cargo tipo) {
+		super(nome, cpf, senha, tipo);
 	}
 
-	public void setCargo(String cargo) {
-		this.cargo = cargo;
+	public void addNovaConta() {
 	}
+
 }

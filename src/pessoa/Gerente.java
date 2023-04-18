@@ -1,21 +1,15 @@
 package pessoa;
 
 public class Gerente extends Funcionario {
+	private int numeroAgencia;
 
-	public Gerente(String nome, String cpf, Integer senha, String email, Integer telefone, String endereco,
-			String cargo) {
-		super(nome, cpf, senha, email, telefone, endereco, cargo);
-
+	public Gerente(String nome, String cpf, int senha, Cargo tipo, int numeroAgencia) {
+		super(nome, cpf, senha, tipo);
+		this.numeroAgencia = numeroAgencia;
 	}
 
-	private int gestaoAgencia;
-
-	public int getGestaoAgencia() {
-		return gestaoAgencia;
-	}
-
-	public void setGestaoAgencia(int gestao) {
-		this.gestaoAgencia = gestao;
+	public Gerente(String nome, String cpf, int senha, Cargo tipo) {
+		super(nome, cpf, senha, tipo);
 	}
 
 }
