@@ -8,7 +8,7 @@ public class SistemaBancario
 	
 	
 	{
-		// Chamar Menu //
+		
 		
 		Menu mn = new Menu();
 		mn.ChamaMenu();
