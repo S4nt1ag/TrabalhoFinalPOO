@@ -8,6 +8,7 @@ public class Menu
 
 	public int escolha;
 
+	Scanner read = new Scanner(System.in);
 	public void ChamaMenu()
 
 	{
@@ -18,7 +19,6 @@ public class Menu
 		System.out.println("--------------------------------------------------------------");
 		System.out.println("--------------------- Sistema Bancário JK  -------------------");
 		System.out.println("--------------------------------------------------------------\n");
-		Scanner read = new Scanner(System.in);
 
 		System.out.println("Digite seu CPF: \n");
 		cpf = read.nextInt();
