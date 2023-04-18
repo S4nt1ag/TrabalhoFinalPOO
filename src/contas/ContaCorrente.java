@@ -4,11 +4,10 @@ public class ContaCorrente extends Conta{
 
 	private double saldo;
 
+	public static final double TAXA_SAQUE = 0.10;
+	public static final double TAXA_DEPOSITO = 0.10;
+	public static final double TAXA_TRANSFERENCIA = 0.20;
 
-	public ContaCorrente(String nome, String cpf, Integer senha, String email, Integer telefone, String endereco) {
-		super(nome, cpf, senha, email, telefone, endereco);
-		
-	}
 	
 		public void sacar(double valor) {
 				
