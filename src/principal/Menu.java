@@ -14,7 +14,6 @@ public class Menu
 
 		int cpf;
 		int senha;
-		pamonha;
 		
 		System.out.println("--------------------------------------------------------------");
 		System.out.println("--------------------- Sistema Bancário JK  -------------------");
