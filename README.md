@@ -1,6 +1,10 @@
 # Trabalho POO - Serratec 2023.1
 
+## Sistema Bancário
 
+O trabalho final da disciplina de Java 1 foi promover o desenvolvimento de um
+pequeno sistema bancário utilizando os tópicos apresentados e desenvolvidos
+na disciplina.
 
 <div align="center">
 
