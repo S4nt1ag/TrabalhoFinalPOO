@@ -5,30 +5,33 @@ import java.util.Scanner;
 public class Menu
 
 {
-
 	public int escolha = 0;
 	String cpf;
 	String senha;
 
 	Scanner read = new Scanner(System.in);
 
+	// MENU PRINCIPAL: //
+	
 	public void ChamaMenu()
 
 	{
-
-		System.out.println("--------------------------------------------------------------");
-		System.out.println("--------------------- Sistema Bancário JK  -------------------");
-		System.out.println("--------------------------------------------------------------\n");
+		System.out.println("------------------------------------------------------------------");
+		System.out.println("--------------------- Sistema Bancário JK  -----------------------");
+		System.out.println("------------------------------------------------------------------\n");
 
 		System.out.print("Digite seu CPF: ");
 		cpf = read.next();
 
-		System.out.print("Entre com sua senha: ");
+		System.out.print("Digite sua senha: ");
 		senha = read.next();
-		menuPrincipal();
+		
+		validaCadastro();
 	}
 
-	public void menuPrincipal() {
+	public void validaCadastro() 
+	
+	{
 
 		if ((cpf.equals("cliente") && senha.equals("cliente"))) {
 
@@ -38,9 +41,7 @@ public class Menu
 
 			menuGerente();
 
-		} else if ((cpf.equals("diretor") && senha.equals("diretor")))
-
-		{
+		} else if ((cpf.equals("diretor") && senha.equals("diretor"))) {
 
 			menuDiretor();
 
@@ -51,14 +52,17 @@ public class Menu
 
 		else {
 
-			System.out.println(" Cpf ou senha não identificados ");
-			System.out.println("Tente novamente ! ");
+			System.out.println("CPF ou senha não cadastrados!");
+			System.out.println("Tente novamente!");
+			
 			ChamaMenu();
 
 		}
 
 	}
 
+	// MENUS PESSOAS: //
+	
 	public void menuCliente() {
 
 		do {
@@ -80,17 +84,20 @@ public class Menu
 			// outros casos
 
 			case 3:
+				
+				System.out.println("Sistema finalizado.");
 				break;
 
 			default:
-				System.out.println("Digite um número que seja válido ");
-				System.out.print("Digite qualquer coisa para continuar");
+				
+				System.out.println("Opção inválida! \n");
+				menuCliente();
 				read.next();
-				break;
+				
 
 			}
 
-		} while (escolha != 3);
+		    } while (escolha != 3);
 
 //movimentacao(){
 		/*
@@ -162,18 +169,18 @@ public class Menu
 			// outros casos
 
 			case 3:
-			//	relatorioGerente();
+				// relatorioGerente();
 				break;
 
 			case 4:
+				System.out.println("Sistema finalizado.");
 				break;
 
 			default:
-				System.out.println("Digite um número que seja válido ");
-				System.out.print("Digite qualquer coisa para continuar");
+				
+				System.out.println("Opção inválida! \n ");
+				menuGerente();
 				read.next();
-				break;
-
 			}
 
 		} while (escolha != 4);
@@ -201,21 +208,22 @@ public class Menu
 			break;
 
 		case 3:
-			//relatorioGerente();
+			// relatorioGerente();
 			break;
 
 		case 4:
-			//relatorioDiretor();
+			// relatorioDiretor();
 
 		case 5:
+			System.out.println("Sistema finalizado.");
 			break;
 
 		default:
-			System.out.println("Digite um número que seja válido ");
-			System.out.print("Digite qualquer coisa para continuar");
+					
+			System.out.println("Opção inválida! \n");	
+			menuDiretor();
 			read.next();
-			break;
-
+			
 		}
 		while (escolha != 5)
 			;
@@ -224,7 +232,8 @@ public class Menu
 
 	public void menuPresidente() {
 
-		System.out.println("Escolha uma opção: ");
+		System.out.println("\n ");
+		System.out.println("Escolha uma opção: \n");
 		System.out.println("1 - Saldo");
 		System.out.println("2 - Relatórios");
 		System.out.println("3 - Relátorio Gerente");
@@ -244,24 +253,27 @@ public class Menu
 			break;
 
 		case 3:
-			//relatorioGerente();
+			// relatorioGerente();
 			break;
 
 		case 4:
-			//relatorioDiretor();
+			// relatorioDiretor();
 			break;
 		case 5:
-			//relatorioPresidente();
+			// relatorioPresidente();
 			break;
 
 		case 6:
+			System.out.println("Programa finalizado. \n");
 			break;
 
 		default:
-			System.out.println("Digite um número que seja válido ");
-			System.out.print("Digite qualquer coisa para continuar");
+			
+			System.out.println("Opção inválida!");
+			menuPresidente();
+			//System.out.print("Digite qualquer tecla para continuar.");
 			read.next();
-			break;
+			//break;
 
 		}
 		while (escolha != 6)
@@ -269,4 +281,5 @@ public class Menu
 
 	}
 
+	//////////////////////
 }
