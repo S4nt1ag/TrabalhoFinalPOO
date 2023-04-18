@@ -3,11 +3,7 @@ package contas;
 public class ContaPoupanca extends Conta {
 
 	private double saldo;
-
-	public ContaPoupanca(String nome, String cpf, Integer senha, String email, Integer telefone, String endereco) {
-		super(nome, cpf, senha, email, telefone, endereco);
-		
-	}
+	public final double TAXA_RENDIMENTO = 0.1;
 	
 	public void sacar(double valor) {
 
