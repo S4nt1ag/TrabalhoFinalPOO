@@ -26,5 +26,29 @@ public class ContaPoupanca extends Conta {
 
 	}
 
-
-}
+	public double geraRelatorioRendimento() {
+		
+		
+		int diasInvestidos;
+		double rendimento = 0;
+		double valorAplicado;
+		
+		
+		System.out.println("Qual capital será investido");
+		valorAplicado = read.next();
+		
+		System.out.println("Informe a quantidade de dias que o capital ficará aplicado: ");
+		diasInvestidos = read.next();
+		
+		
+		
+		
+		rendimento = (valorAplicado * 0.022) + diasInvestidos;
+				return rendimento;
+				
+			}
+			
+		}
+		
+	
+	
