@@ -9,6 +9,7 @@ public abstract class Menu
 	public int escolha = 0;
 
 	Scanner read = new Scanner(System.in);
+
 	public void ChamaMenu()
 
 	{
@@ -65,14 +66,10 @@ public abstract class Menu
 		 * 
 		 * int escolha;
 		 */
+	}
+	public void menuCliente() {
 
-		
-	
-		
-		public void menuCliente(){
-		
-				
-				do {
+		do {
 
 			System.out.println("Escolha uma opção: ");
 			System.out.println("1 - Movimentações na Conta");
@@ -147,10 +144,10 @@ public abstract class Menu
 		 * }
 		 */
 
-
 	}
-	public void menuGerente(){
-		
+
+	public void menuGerente() {
+
 		do {
 
 			System.out.println("Escolha uma opção: ");
@@ -166,8 +163,9 @@ public abstract class Menu
 				// geraSaldo();
 				break;
 			case 2:
-				// relatorio(); (fazer super para adicionar o relatorio do número contas, na mesma agência em que este gerente trabalha)
-				
+				// relatorio(); (fazer super para adicionar o relatorio do número contas, na
+				// mesma agência em que este gerente trabalha)
+
 				break;
 			// outros casos
 
@@ -177,7 +175,7 @@ public abstract class Menu
 
 			case 4:
 				break;
-				
+
 			default:
 				System.out.println("Digite um número que seja válido ");
 				System.out.print("Digite qualquer coisa para continuar");
@@ -187,102 +185,96 @@ public abstract class Menu
 			}
 
 		} while (escolha != 4);
-		
+
 	}
 
-	 public void menuDiretor(){
-		 
-		 System.out.println("Escolha uma opção: ");
-			System.out.println("1 - Saldo");
-			System.out.println("2 - Relatórios");
-			System.out.println("3 - Relátorio Gerente");
-			System.out.println("4 - Relatório Diretor");
-			System.out.println("5 - Sair");
-			escolha = read.nextInt();
+	public void menuDiretor() {
 
-			switch (escolha) {
-			case 1:
+		System.out.println("Escolha uma opção: ");
+		System.out.println("1 - Saldo");
+		System.out.println("2 - Relatórios");
+		System.out.println("3 - Relátorio Gerente");
+		System.out.println("4 - Relatório Diretor");
+		System.out.println("5 - Sair");
+		escolha = read.nextInt();
 
-				// geraSaldo();
-				break;
-			case 2:
-				// relatorio(); 
-				
-				break;
-			
-			case 3:
-				relatorioGerente();
-				break;
-				
-			case 4:
-				relatorioDiretor();
-				
-			case 5:
-				break;
+		switch (escolha) {
+		case 1:
 
-			default:
-				System.out.println("Digite um número que seja válido ");
-				System.out.print("Digite qualquer coisa para continuar");
-				read.next();
-				break;
+			// geraSaldo();
+			break;
+		case 2:
+			// relatorio();
 
-	 }
-	  while (escolha != 5);
-	  
-	 }
+			break;
 
+		case 3:
+			relatorioGerente();
+			break;
 
+		case 4:
+			relatorioDiretor();
 
-	public void menuPresidente(){
-		 
-		
-			 
-			  	System.out.println("Escolha uma opção: ");
-				System.out.println("1 - Saldo");
-				System.out.println("2 - Relatórios");
-				System.out.println("3 - Relátorio Gerente");
-				System.out.println("4 - Relatório Diretor");
-				System.out.println("5 - Relatório Presidente");
-				System.out.println("6 - Sair");
-				escolha = read.nextInt();
+		case 5:
+			break;
 
-				switch (escolha) {
-				case 1:
+		default:
+			System.out.println("Digite um número que seja válido ");
+			System.out.print("Digite qualquer coisa para continuar");
+			read.next();
+			break;
 
-					// geraSaldo();
-					break;
-				case 2:
-					// relatorio(); 
-					
-					break;
-				
-				case 3:
-					relatorioGerente();
-					break;
-					
-				case 4:
-					relatorioDiretor();
-					
-				case 5:
-					relatorioPresidente();
-					break;
-					
-				case 6:
-					break;
+		}
+		while (escolha != 5)
+			;
 
-				default:
-					System.out.println("Digite um número que seja válido ");
-					System.out.print("Digite qualquer coisa para continuar");
-					read.next();
-					break;
+	}
 
-		 }
-		  while (escolha != 6);
-		 
-		 
-	 }
-	 
+	public void menuPresidente() {
 
+		System.out.println("Escolha uma opção: ");
+		System.out.println("1 - Saldo");
+		System.out.println("2 - Relatórios");
+		System.out.println("3 - Relátorio Gerente");
+		System.out.println("4 - Relatório Diretor");
+		System.out.println("5 - Relatório Presidente");
+		System.out.println("6 - Sair");
+		escolha = read.nextInt();
+
+		switch (escolha) {
+		case 1:
+
+			// geraSaldo();
+			break;
+		case 2:
+			// relatorio();
+
+			break;
+
+		case 3:
+			relatorioGerente();
+			break;
+
+		case 4:
+			relatorioDiretor();
+
+		case 5:
+			relatorioPresidente();
+			break;
+
+		case 6:
+			break;
+
+		default:
+			System.out.println("Digite um número que seja válido ");
+			System.out.print("Digite qualquer coisa para continuar");
+			read.next();
+			break;
+
+		}
+		while (escolha != 6)
+			;
+
+	}
 
 }
-
