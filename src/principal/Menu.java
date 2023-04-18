@@ -11,7 +11,7 @@ public class Menu
 	public void ChamaMenu()
 
 	{
-
+		int testes;
 		int cpf;
 		int senha;
 		
