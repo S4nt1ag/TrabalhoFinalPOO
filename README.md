@@ -22,7 +22,7 @@
 
 ## Stack utilizada
 
-- Java
+![Java](https://img.shields.io/badge/Java-0D1117?style=for-the-badge&logo=openjdk&logoColor=white)
 
 
 
