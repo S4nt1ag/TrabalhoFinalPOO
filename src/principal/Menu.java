@@ -20,7 +20,7 @@ public class Menu
 		System.out.println("--------------------- Sistema Bancário JK  -------------------");
 		System.out.println("--------------------------------------------------------------\n");
 
-		System.out.print("Digite seu CPF: \n");
+		System.out.print("Digite seu CPF: ");
 		cpf = read.next();
 
 		System.out.print("Entre com sua senha: ");
@@ -30,21 +30,21 @@ public class Menu
 
 	public void menuPrincipal() {
 
-		if (cpf == "cliente" && senha == "cliente") {
+		if ((cpf.equals("cliente") && senha.equals("cliente"))) {
 
 			menuCliente();
 
-		} else if (cpf == "gerente" && senha == "gerente") {
+		} else if ((cpf.equals("gerente") && senha.equals("gerente"))) {
 
 			menuGerente();
 
-		} else if (cpf == "diretor" && senha == "diretor")
+		} else if ((cpf.equals("diretor") && senha.equals("diretor")))
 
 		{
 
 			menuDiretor();
 
-		} else if (cpf == "presidente" && senha == "presidente") {
+		} else if ((cpf.equals("presidente") && senha.equals("presidente"))) {
 
 			menuPresidente();
 		}
@@ -162,7 +162,7 @@ public class Menu
 			// outros casos
 
 			case 3:
-				relatorioGerente();
+			//	relatorioGerente();
 				break;
 
 			case 4:
@@ -201,11 +201,11 @@ public class Menu
 			break;
 
 		case 3:
-			relatorioGerente();
+			//relatorioGerente();
 			break;
 
 		case 4:
-			relatorioDiretor();
+			//relatorioDiretor();
 
 		case 5:
 			break;
@@ -244,14 +244,14 @@ public class Menu
 			break;
 
 		case 3:
-			relatorioGerente();
+			//relatorioGerente();
 			break;
 
 		case 4:
-			relatorioDiretor();
-
+			//relatorioDiretor();
+			break;
 		case 5:
-			relatorioPresidente();
+			//relatorioPresidente();
 			break;
 
 		case 6:
