@@ -12,11 +12,11 @@
 
 - [@S4nt1ag](https://github.com/S4nt1ag)
 
-- [@isabeldefreitas] (https://github.com/isabeldefreitas)
+- [@isabeldefreitas](https://github.com/isabeldefreitas)
 
-- [@tamirys2506] (https://github.com/tamirys2506)
+- [@tamirys2506](https://github.com/tamirys2506)
 
-- [@alexandre-vpacheco] (https://github.com/alexandre-vpacheco)
+- [@alexandre-vpacheco](https://github.com/alexandre-vpacheco)
 
 ## Stack utilizada
 
