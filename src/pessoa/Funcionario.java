@@ -6,12 +6,17 @@ public abstract class Funcionario extends Pessoa {
 
 	private HashMap<String, Funcionario> listaFuncionarios = new HashMap<String, Funcionario>();
 
-	public Funcionario(String nome, String cpf, int senha) {
-		super(nome, cpf, senha);
+	public Funcionario(String nome, String cpf, int senha, Cargo tipo) {
+		super(nome, cpf, senha, tipo);
+
 	}
 
 	public void addNovaConta() {
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Funcionario [nome=" + nome + ", cpf=" + cpf + ", senha=" + senha + ", tipo=" + tipo + "]";
+	}
+
 }

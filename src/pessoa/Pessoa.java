@@ -1,15 +1,17 @@
 package pessoa;
 
 public abstract class Pessoa {
-	private String nome;
-	private String cpf;
-	private int senha;
+	protected String nome;
+	protected String cpf;
+	protected int senha;
+	protected Cargo tipo;
 
-	public Pessoa(String nome, String cpf, int senha) {
+	public Pessoa(String nome, String cpf, int senha, Cargo tipo) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.senha = senha;
+		this.tipo = tipo;
 	}
 
 	public String getNome() {
@@ -35,7 +37,6 @@ public abstract class Pessoa {
 	public void setSenha(int senha) {
 		this.senha = senha;
 	}
-
 
 	@Override
 	public String toString() {
