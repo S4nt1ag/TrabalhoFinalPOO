@@ -31,7 +31,7 @@ public class ContaPoupanca extends Conta {
 	}
 
 		
-	public void sacar(double valor) {
+	public boolean sacar(double valor) {
 
 		if (valor <= 0) {
 			System.out.println("Valor inválido para saque.");
@@ -66,6 +66,11 @@ public class ContaPoupanca extends Conta {
 	public void relatorio() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public boolean sacar() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
