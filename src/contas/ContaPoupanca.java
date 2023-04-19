@@ -47,4 +47,10 @@ public class ContaPoupanca extends Conta {
 		return "ContaPoupanca [numero=" + numero + ", titular=" + titular + ", saldo=" + saldo + ", tipo=" + tipo + "]";
 	}
 
+	@Override
+	public void relatorio() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -29,4 +29,10 @@ public class ContaCorrente extends Conta {
 		return "ContaCorrente [numero=" + numero + ", titular=" + titular + ", saldo=" + saldo + ", tipo=" + tipo + "]";
 	}
 
+	@Override
+	public void relatorio() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
