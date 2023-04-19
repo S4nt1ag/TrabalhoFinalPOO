@@ -64,4 +64,16 @@ public abstract class Conta implements Aplicacao {
 		return "Conta [numero=" + numero + ", titular=" + titular + ", saldo=" + saldo + ", tipo=" + tipo + "]";
 	}
 
+
+
+public void relatorio(Double valorSaque, Double valorDeposito, Double valorTransferenciaRemetente) {
+	
+	Double total;
+	
+	total = valorSaque * 0.10 + valorDeposito * 0.10 + valorTransferenciaRemetente* 0.20;
+	
+// Adicionalmente deverão ser informados os valores que o banco
+	//cobra por cada operação bancária;
+}
+
 }
