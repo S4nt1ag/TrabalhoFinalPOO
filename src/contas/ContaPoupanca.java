@@ -54,8 +54,20 @@ public class ContaPoupanca extends Conta {
 
 	}
 	
-	public void tranferir() {
-
+	public void transferir(double valor, Conta destino) {
+	    
+		if (valor <= 0) {
+	        System.out.println("Valor inválido para transferência.");
+	        
+	    } else if (valor > this.saldo) {
+	        System.out.println("Saldo insuficiente para realizar a transferência.");
+	        
+	    } else {
+	        double valorTransferencia = valor;
+	        this.saldo -= valorTransferencia;
+	        destino.depositar(valor);
+	        System.out.println("Transferência realizada com sucesso!");
+	    }
 	}
 
 

@@ -23,14 +23,16 @@ public class SistemaBancario
 		System.out.println(conta2.toString());
 		
 		
-		
 		Pessoa pessoa = new Cliente("Santiago", "123456789", 1234, Cargo.CLIENTE);
-		Conta conta = new ContaCorrente(12, pessoa, 100.50, TipoConta.CONTA_CORRENTE);
+		ContaCorrente conta = new ContaCorrente(12, pessoa, 100.50, TipoConta.CONTA_CORRENTE);
 		System.out.println(conta.toString());
 		conta.sacar(40.00);
 		System.out.println(conta.toString());
 		conta.depositar(10.00);
 		System.out.println(conta.toString());
+		conta.transferir(10.00, conta2);
+		System.out.println(conta.getSaldo());
+		System.out.println(conta2.getSaldo());
 		
 		Pessoa pessoa3 = new Cliente("Alexandre", "123654789", 31415, Cargo.CLIENTE);
 		Conta conta3 = new ContaPoupanca(13, pessoa3, 200.00, TipoConta.CONTA_POUPANCA);

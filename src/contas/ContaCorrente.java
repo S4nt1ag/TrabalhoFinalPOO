@@ -1,6 +1,7 @@
 package contas;
 
 import pessoa.Pessoa;
+import testetrabalhocontas.Conta;
 
 public class ContaCorrente extends Conta {
 
@@ -45,9 +46,19 @@ public class ContaCorrente extends Conta {
 	
 	}
 
-	public void tranferir() {
+	public void transferir(Conta contaDestino, double valor) {
 
-	}
+        if(this.saldo < valor) {
+            System.out.println("Seu saldo é insuficiente!");
+        }
+        else {
+            this.saldo -= valor;
+            contaDestino.saldo += valor;
+
+
+            System.out.println("Seu saldo é de: " + this.saldo);
+        }
+    }
 
 	@Override
 	public String toString() {
