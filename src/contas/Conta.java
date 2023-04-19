@@ -55,7 +55,8 @@ public abstract class Conta implements Aplicacao {
 		
 	}
 
-	public void depositar() {
+	public boolean depositar(double valor) {
+		return false;
 	}
 
 	public void transferir() {

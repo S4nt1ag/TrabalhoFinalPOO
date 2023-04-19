@@ -42,6 +42,7 @@ public class ContaPoupanca extends Conta {
 		} else {
 			this.saldo -= valor;
 			System.out.println("Saque realizado com sucesso.");
+			return true;
 		}
 		return false;
 	}

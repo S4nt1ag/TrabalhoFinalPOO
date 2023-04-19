@@ -30,38 +30,7 @@ public class ContaCorrente extends Conta {
 
 	}
 	
-	/*public boolean sacar(double valor) {
-	    
-		if (valor <= 0) {
-	        System.out.println("Valor inválido para saque.");
-	    return false;    
-	    } else if (valor + TAXA_SAQUE > this.saldo) {
-	        System.out.println("Saldo insuficiente.");
-	    return false;   
-	    } else {
-	        double valorSaque = valor ;
-	        this.saldo -= valorSaque + TAXA_SAQUE;
-	        this.totalGasto += TAXA_SAQUE; 
-	        System.out.println("Saque realizado com sucesso!");
-	        return true;
-	    }
-		
 	
-	}*/
-	
-	/*public boolean depositar(double valor) {
-	    
-		if (valor <= 0) {
-	        System.out.println("Valor inválido para depósito.");
-	        return false;
-	    } else {
-	        double valorDeposito = valor;
-	        this.saldo += valorDeposito - (TAXA_DEPOSITO);
-	        //this.totalGasto += TAXA_DEPOSITO;
-	        System.out.println("Depósito realizado com sucesso!");
-	        return true;
-	    }
-	}*/
 
 	public boolean depositar(double valor) {
 
@@ -73,7 +42,7 @@ public class ContaCorrente extends Conta {
 			System.out.println("Depósito realizado com sucesso!");
 			return true;
 		}
-		//return false;
+	
 	}
 
 	public void tranferir() {

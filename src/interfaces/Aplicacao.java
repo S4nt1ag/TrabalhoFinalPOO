@@ -4,7 +4,7 @@ public interface Aplicacao {
 
 	public boolean sacar ();
 	public void transferir();
-	public void depositar();
+	public boolean depositar();
 	public void relatorio();
 	
 }

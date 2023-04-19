@@ -29,10 +29,13 @@ public class SistemaBancario
 		System.out.println(conta.toString());
 		conta.sacar(40.00);
 		System.out.println(conta.toString());
-		
+		conta.depositar(10.00);
+		System.out.println(conta.toString());
 		
 		Pessoa pessoa3 = new Cliente("Alexandre", "123654789", 31415, Cargo.CLIENTE);
 		Conta conta3 = new ContaPoupanca(13, pessoa3, 200.00, TipoConta.CONTA_POUPANCA);
+		System.out.println(conta3.toString());
+		conta3.sacar(40.00);
 		System.out.println(conta3.toString());
 
 		Pessoa pessoa4 = new Diretor("Isabel", "789456123", 4640, Cargo.DIRETOR, 2);
