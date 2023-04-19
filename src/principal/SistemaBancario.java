@@ -21,11 +21,16 @@ public class SistemaBancario
 		Pessoa pessoa2 = new Presidente("Luiz", "987654321", 4321, Cargo.PRESIDENTE, 2);
 		Conta conta2 = new ContaPoupanca(01, pessoa2, 60000.50, TipoConta.CONTA_POUPANCA);
 		System.out.println(conta2.toString());
-
+		
+		
+		
 		Pessoa pessoa = new Cliente("Santiago", "123456789", 1234, Cargo.CLIENTE);
 		Conta conta = new ContaCorrente(12, pessoa, 100.50, TipoConta.CONTA_CORRENTE);
 		System.out.println(conta.toString());
-
+		conta.sacar(40.00);
+		System.out.println(conta.toString());
+		
+		
 		Pessoa pessoa3 = new Cliente("Alexandre", "123654789", 31415, Cargo.CLIENTE);
 		Conta conta3 = new ContaPoupanca(13, pessoa3, 200.00, TipoConta.CONTA_POUPANCA);
 		System.out.println(conta3.toString());

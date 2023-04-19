@@ -50,7 +50,9 @@ public abstract class Conta implements Aplicacao {
 		this.tipo = tipo;
 	}
 
-	public void sacar() {
+	public boolean sacar(double valor) {
+		return false;
+		
 	}
 
 	public void depositar() {

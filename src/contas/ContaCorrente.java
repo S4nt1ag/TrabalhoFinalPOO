@@ -1,5 +1,5 @@
 package contas;
-//pamonha
+
 import pessoa.Pessoa;
 
 public class ContaCorrente extends Conta {
@@ -12,26 +12,29 @@ public class ContaCorrente extends Conta {
 		super(numero, titular, saldo, tipo);
 	}
 
-	public void sacar(double valor) {
-		
-		if (valor <= 0) {
-			System.out.println("Valor inválido para saque.");
+	public boolean sacar(double valor) {
+
+		if (valor <= this.saldo) {
+			this.saldo -= valor;
+			System.out.println("Saque realizado com sucesso!");
+			return true;
 			
 		} else if (valor > this.saldo) {
 			System.out.println("Saldo insuficiente.");
-			
+
 		} else {
-			this.saldo -= valor;
-			System.out.println("Saque realizado com sucesso!");
+			System.out.println("Valor inválido para saque.");
 		}
+
+		return false;
+
 	}
-	
-	
+
 	public void depositar(double valor) {
-		
+
 		if (valor <= 0) {
 			System.out.println("Valor inválido para depósito.");
-			
+
 		} else {
 			this.saldo += valor;
 			System.out.println("Depósito realizado com sucesso!");
@@ -42,8 +45,6 @@ public class ContaCorrente extends Conta {
 
 	}
 
-	
-
 	@Override
 	public String toString() {
 		return "ContaCorrente [numero=" + numero + ", titular=" + titular + ", saldo=" + saldo + ", tipo=" + tipo + "]";
@@ -52,7 +53,7 @@ public class ContaCorrente extends Conta {
 	@Override
 	public void relatorio() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
