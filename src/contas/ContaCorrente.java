@@ -48,11 +48,11 @@ public class ContaCorrente extends Conta {
 
 	public void transferir(Conta contaDestino, double valor) {
 
-        if(this.saldo < valor) {
+        if(this.saldo + TAXA_TRANSFERENCIA <= valor) {
             System.out.println("Seu saldo é insuficiente!");
         }
         else {
-            this.saldo -= valor;
+            this.saldo -= valor + TAXA_TRANSFERENCIA;
             contaDestino.saldo += valor;
 
 
