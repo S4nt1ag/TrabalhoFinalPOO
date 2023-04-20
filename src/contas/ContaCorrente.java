@@ -11,7 +11,7 @@ public class ContaCorrente extends Conta {
 	public static final double TAXA_DEPOSITO = 0.10;
 	public static final double TAXA_TRANSFERENCIA = 0.20;
 	
-	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/aaaa HH:mm:ss");
+	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     Date date =  new Date();
     
 
@@ -19,7 +19,8 @@ public class ContaCorrente extends Conta {
 		super(numero, titular, saldo, tipo);
 	}
 
-	public boolean sacar(double valor) {
+	/*a. SAQUE*/	
+    public boolean sacar(double valor) {
 
 		if (valor + TAXA_SAQUE <= this.saldo) {
 			this.saldo -= valor+ TAXA_SAQUE;
@@ -38,8 +39,7 @@ public class ContaCorrente extends Conta {
 
 	}
 	
-	
-
+    /*b. DEPÓSITO*/
 	public boolean depositar(double valor) {
 
 		if (valor <= 0) {
@@ -54,6 +54,7 @@ public class ContaCorrente extends Conta {
 	
 	}
 
+	/*c. TRANSFERÊNCIA*/
 	public void transferir(Conta contaDestino, double valor) {
 
         if(this.saldo + TAXA_TRANSFERENCIA <= valor) {
@@ -68,9 +69,10 @@ public class ContaCorrente extends Conta {
         }
     }
 
+	/*RELATÓRIO*/
 	@Override
 	public void relatorio() {
-		// TODO Auto-generated method stub
+		System.out.println("Relatório: ");
 
 	}
 
@@ -79,6 +81,13 @@ public class ContaCorrente extends Conta {
 		return "ContaCorrente [numero=" + numero + ", titular=" + titular + ", saldo=" + saldo + ", tipo=" + tipo + "]";
 	}
 
+	public void extrato() {
 	
-
+	System.out.println("Extrato atual de conta corrente");
+	System.out.println("Agência: " +"1" +"     conta: " + getNumero());
+	System.out.println("Cliente: " + ((Pessoa)(titular)).getNome());
+	
+	
+	}
+	
 }

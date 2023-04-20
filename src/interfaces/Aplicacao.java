@@ -8,6 +8,7 @@ public interface Aplicacao {
 	public void transferir(double valor, Conta contaDestino);
 	public boolean depositar(double valor);
 	public void relatorio();
+	public void extrato();
 	
 }
 	 

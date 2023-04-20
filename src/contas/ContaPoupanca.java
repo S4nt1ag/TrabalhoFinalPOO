@@ -11,7 +11,7 @@ public class ContaPoupanca extends Conta {
 	Scanner read = new Scanner(System.in);
 	public final double TAXA_RENDIMENTO = 0.1;
 
-	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/aaaa HH:mm:ss");
+	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	Date date = new Date();
 
 	public ContaPoupanca(int numero, Pessoa titular, double saldo, TipoConta tipo) {
@@ -35,7 +35,6 @@ public class ContaPoupanca extends Conta {
 
 	}
 
-	// aqui
 	public boolean sacar(double valor) {
 
 		if (valor <= 0) {
@@ -84,6 +83,14 @@ public class ContaPoupanca extends Conta {
 		}
 	}
 
+	public void extrato() {
+		
+		System.out.println("Extrato atual de conta poupança");
+		System.out.println("Agência: " +"1" +"     conta: " + getNumero());
+		System.out.println("Cliente: " + ((Pessoa)(titular)).getNome());	
+		
+		}
+	
 	@Override
 	public void relatorio() {
 		// TODO Auto-generated method stub

@@ -5,6 +5,7 @@ import pessoa.Pessoa;
 
 public abstract class Conta implements Aplicacao {
 
+	
 	protected int numero;
 	protected Pessoa titular;
 	protected double saldo;
@@ -79,9 +80,7 @@ public abstract class Conta implements Aplicacao {
 		return "Conta [numero=" + numero + ", titular=" + titular + ", saldo=" + saldo + ", tipo=" + tipo + "]";
 	}
 
-
-
-public void relatorio(Double valorSaque, Double valorDeposito, Double valorTransferenciaRemetente) {
+	public void relatorio(Double valorSaque, Double valorDeposito, Double valorTransferenciaRemetente) {
 	
 	Double total;
 	
@@ -91,9 +90,7 @@ public void relatorio(Double valorSaque, Double valorDeposito, Double valorTrans
 	//cobra por cada operação bancária;
 }
 
-public void relatorio() {
-	// TODO Auto-generated method stub
-	
-}
-
+	public void extrato() {
+		
+	}
 }

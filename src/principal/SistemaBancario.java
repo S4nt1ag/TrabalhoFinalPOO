@@ -49,6 +49,11 @@ public class SistemaBancario
 		System.out.println(conta5.toString());
 		conta5.depositar(10.00);
 		System.out.println(conta5.toString());
+		
+		conta.extrato();
+		
+		conta3.extrato();
+		
 	}
 
 }
