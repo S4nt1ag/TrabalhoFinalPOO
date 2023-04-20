@@ -1,7 +1,7 @@
 package contas;
 
-import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import pessoa.Pessoa;
 
@@ -69,15 +69,16 @@ public class ContaCorrente extends Conta {
     }
 
 	@Override
-	public String toString() {
-		return "ContaCorrente [numero=" + numero + ", titular=" + titular + ", saldo=" + saldo + ", tipo=" + tipo + "]";
-	}
-
-	@Override
 	public void relatorio() {
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	public String toString() {
+		return "ContaCorrente [numero=" + numero + ", titular=" + titular + ", saldo=" + saldo + ", tipo=" + tipo + "]";
+	}
+
 	
 
 }
