@@ -14,11 +14,12 @@ public class ContaCorrente extends Conta {
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     Date date =  new Date();
     
-
 	public ContaCorrente(int numero, Pessoa titular, double saldo, TipoConta tipo) {
 		super(numero, titular, saldo, tipo);
 	}
 
+	/*1. MOVIMENTAÇÕES NA CONTA*/
+	
 	/*a. SAQUE*/	
     public boolean sacar(double valor) {
 
@@ -69,6 +70,15 @@ public class ContaCorrente extends Conta {
         }
     }
 
+	/*d. EXTRATO*/
+	public void extrato() {
+		
+		System.out.println("Extrato atual de conta corrente");
+		System.out.println("Agência: " +"1" +"     conta: " + getNumero());
+		System.out.println("Cliente: " + ((Pessoa)(titular)).getNome());
+		
+		}
+	
 	/*RELATÓRIO*/
 	@Override
 	public void relatorio() {
@@ -81,13 +91,6 @@ public class ContaCorrente extends Conta {
 		return "ContaCorrente [numero=" + numero + ", titular=" + titular + ", saldo=" + saldo + ", tipo=" + tipo + "]";
 	}
 
-	public void extrato() {
 	
-	System.out.println("Extrato atual de conta corrente");
-	System.out.println("Agência: " +"1" +"     conta: " + getNumero());
-	System.out.println("Cliente: " + ((Pessoa)(titular)).getNome());
-	
-	
-	}
 	
 }
