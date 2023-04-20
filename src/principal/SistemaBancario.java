@@ -47,6 +47,8 @@ public class SistemaBancario
 		Pessoa pessoa5 = new Gerente("Maria", "879546213", 3333, Cargo.GERENTE, 2);
 		Conta conta5 = new ContaPoupanca(17, pessoa5, 2000.25, TipoConta.CONTA_POUPANCA);
 		System.out.println(conta5.toString());
+		conta5.depositar(10.00);
+		System.out.println(conta5.toString());
 	}
 
 }

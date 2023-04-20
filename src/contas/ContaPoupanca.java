@@ -47,11 +47,17 @@ public class ContaPoupanca extends Conta {
 		return false;
 	}
 
-	public void depositar(double valor) {
+	public boolean depositar(double valor) {
 
-		this.saldo += valor;
-		System.out.println("Depósito realizado com sucesso.");
-
+		if (valor <= 0) {
+			System.out.println("Valor inválido para depósito.");
+			return false;
+		} else {
+			this.saldo += valor;
+			System.out.println("Depósito realizado com sucesso!");
+			return true;
+		}
+	
 	}
 	
 	public void transferir(double valor, Conta destino) {
