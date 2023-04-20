@@ -1,13 +1,19 @@
 package contas;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 import pessoa.Pessoa;
-import testetrabalhocontas.Conta;
 
 public class ContaCorrente extends Conta {
 
 	public static final double TAXA_SAQUE = 0.10;
 	public static final double TAXA_DEPOSITO = 0.10;
 	public static final double TAXA_TRANSFERENCIA = 0.20;
+	
+	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/aaaa HH:mm:ss");
+    Date date =  new Date();
+    
 
 	public ContaCorrente(int numero, Pessoa titular, double saldo, TipoConta tipo) {
 		super(numero, titular, saldo, tipo);
@@ -18,6 +24,7 @@ public class ContaCorrente extends Conta {
 		if (valor + TAXA_SAQUE <= this.saldo) {
 			this.saldo -= valor+ TAXA_SAQUE;
 			System.out.println("Saque realizado com sucesso!");
+			System.out.println("Data: " + sdf.format(date));
 			return true;
 			
 		} else if (valor + TAXA_SAQUE > this.saldo) {
@@ -41,6 +48,7 @@ public class ContaCorrente extends Conta {
 		} else {
 			this.saldo += valor-TAXA_DEPOSITO;
 			System.out.println("Depósito realizado com sucesso!");
+			System.out.println("Data: " + sdf.format(date));
 			return true;
 		}
 	
@@ -55,8 +63,8 @@ public class ContaCorrente extends Conta {
             this.saldo -= valor + TAXA_TRANSFERENCIA;
             contaDestino.saldo += valor;
 
-
-            System.out.println("Seu saldo é de: " + this.saldo);
+            System.out.println("Transferência realizada com sucesso!");
+            System.out.println("Data: " + sdf.format(date));
         }
     }
 
@@ -70,12 +78,6 @@ public class ContaCorrente extends Conta {
 		// TODO Auto-generated method stub
 
 	}
-
-	/*public boolean sacar() {
-		// TODO Auto-generated method stub
-		return false;
-	}*/
-
 	
 
 }

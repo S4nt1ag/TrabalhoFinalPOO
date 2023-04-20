@@ -4,9 +4,9 @@ import contas.Conta;
 
 public interface Aplicacao {
 
-	public boolean sacar ();
+	public boolean sacar (double valor);
 	public void transferir(double valor, Conta contaDestino);
-	public boolean depositar();
+	public boolean depositar(double valor);
 	public void relatorio();
 	
 }
