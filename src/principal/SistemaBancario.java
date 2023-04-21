@@ -31,13 +31,19 @@ public class SistemaBancario
 		conta1.transferir(100.00, conta2);
 		conta1.depositar(200.00);
 		System.out.println();
-		conta1.extrato();
+		
 		System.out.println();
 		conta2.sacar(200.00);
 		conta2.depositar(200.00);
 		conta2.transferir(100.00, conta1);
 		System.out.println();
+		conta1.extrato();
+		System.out.println();
 		conta2.extrato();
+		
+		System.out.println();
+		System.out.println(conta1.getSaldo());
+		System.out.println(conta2.getSaldo());
 
 	}
 

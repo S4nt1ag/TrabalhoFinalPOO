@@ -2,10 +2,12 @@ package principal;
 
 import java.util.Scanner;
 
+import contas.Conta;
+
 public class Menu
 
 {
-	public int escolha = 0;
+	public char escolha = ' ';
 	String cpf;
 	String senha;
 
@@ -63,7 +65,7 @@ public class Menu
 
 	// MENUS PESSOAS: //
 	
-	public void menuCliente() {
+	public void menuCliente(Conta usuario) {
 
 		do {
 
@@ -71,19 +73,59 @@ public class Menu
 			System.out.println("1 - Movimentações na Conta");
 			System.out.println("2 - Relatórios");
 			System.out.println("3 - Sair");
-			escolha = read.nextInt();
+			escolha = read.next().charAt(0);
 
 			switch (escolha) {
-			case 1:
-
-				// movimentacao();
+			
+			case '1':
+				
+				System.out.println("Movimentações na conta ");
+				System.out.println("Escolha uma opção: ");
+				System.out.println("a. Saque");
+				System.out.println("b. Deposito");
+				System.out.println("c. Transferencia");
+				System.out.println("d. Extrato da conta");
+				escolha = read.next().charAt(0);
+				
+				switch(escolha) {
+				
+				case 'a':
+					
+					System.out.println("Digite o valor do saque");
+					double valor=read.nextDouble();
+					usuario.sacar(valor);
+					menuCliente(usuario);
+					
+					break;
+					
+				case 'b':
+					
+					System.out.println("Digite o valor do deposito");
+					double valor=read.nextDouble();
+					usuario.depositar(valor);
+					menuCliente(usuario);
+					
+					break;
+					
+				case 'c':
+					break;
+					
+				case 'd':
+					break;
+					
+				case '4':
+					break;
+				}
+				
+				
 				break;
-			case 2:
+				
+			case '2':
 				// relatorio();
 				break;
 			// outros casos
 
-			case 3:
+			case '3':
 				
 				System.out.println("Sistema finalizado.");
 				break;

@@ -72,7 +72,7 @@ public class ContaCorrente extends Conta {
 		} else {
 			double valorTransferencia = valor;
 			this.saldo -= valorTransferencia;
-			destino.depositar(valor);
+			destino.depositar(valor); //alterar nome depois 
 			System.out.println("Transferência realizada com sucesso!");
 			System.out.println("Data: " + sdf.format(date));
 			contaC.add(sdf.format(date) + " Tranferencia " + valor);
