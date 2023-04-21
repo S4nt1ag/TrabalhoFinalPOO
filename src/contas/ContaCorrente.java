@@ -1,7 +1,9 @@
 package contas;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import pessoa.Pessoa;
 
@@ -13,6 +15,10 @@ public class ContaCorrente extends Conta {
 	
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     Date date =  new Date();
+    
+    List <String> contaC = new ArrayList<String>();
+    
+    
     
 	public ContaCorrente(int numero, Pessoa titular, double saldo, TipoConta tipo) {
 		super(numero, titular, saldo, tipo);
@@ -27,6 +33,7 @@ public class ContaCorrente extends Conta {
 			this.saldo -= valor+ TAXA_SAQUE;
 			System.out.println("Saque realizado com sucesso!");
 			System.out.println("Data: " + sdf.format(date));
+			contaC.add(sdf.format(date)+" Saque "+ valor );
 			return true;
 			
 		} else if (valor + TAXA_SAQUE > this.saldo) {
@@ -50,16 +57,17 @@ public class ContaCorrente extends Conta {
 			this.saldo += valor-TAXA_DEPOSITO;
 			System.out.println("Depósito realizado com sucesso!");
 			System.out.println("Data: " + sdf.format(date));
+			contaC.add(sdf.format(date)+" Depósito "+ valor );
 			return true;
-		}
-	
+		}	
 	}
 
 	/*c. TRANSFERÊNCIA*/
-	public void transferir(Conta contaDestino, double valor) {
+	public boolean  transferir(Conta contaDestino, double valor) {
 
         if(this.saldo + TAXA_TRANSFERENCIA <= valor) {
             System.out.println("Seu saldo é insuficiente!");
+            return false;
         }
         else {
             this.saldo -= valor + TAXA_TRANSFERENCIA;
@@ -67,6 +75,8 @@ public class ContaCorrente extends Conta {
 
             System.out.println("Transferência realizada com sucesso!");
             System.out.println("Data: " + sdf.format(date));
+            contaC.add(sdf.format(date)+" Tranferencia "+ valor);
+            return true;
         }
     }
 
@@ -76,6 +86,11 @@ public class ContaCorrente extends Conta {
 		System.out.println("Extrato atual de conta corrente");
 		System.out.println("Agência: " +"1" +"     conta: " + getNumero());
 		System.out.println("Cliente: " + ((Pessoa)(titular)).getNome());
+		for (String i : contaC) {
+			System.out.println(i);
+		}
+			
+		
 		
 		}
 	

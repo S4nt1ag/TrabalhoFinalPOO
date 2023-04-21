@@ -1,7 +1,9 @@
 package contas;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 import pessoa.Pessoa;
@@ -13,6 +15,7 @@ public class ContaPoupanca extends Conta {
 
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	Date date = new Date();
+	List <String> contaP = new ArrayList<String>();
 
 	public ContaPoupanca(int numero, Pessoa titular, double saldo, TipoConta tipo) {
 		super(numero, titular, saldo, tipo);
@@ -47,6 +50,7 @@ public class ContaPoupanca extends Conta {
 			this.saldo -= valor;
 			System.out.println("Saque realizado com sucesso.");
 			System.out.println("Data: " + sdf.format(date));
+			contaP.add(sdf.format(date)+" Saque "+ valor );
 			return true;
 		}
 		return false;
@@ -61,12 +65,13 @@ public class ContaPoupanca extends Conta {
 			this.saldo += valor;
 			System.out.println("Depósito realizado com sucesso!");
 			System.out.println("Data: " + sdf.format(date));
+			contaP.add(sdf.format(date)+" Depósito "+ valor );
 			return true;
 		}
 
 	}
 
-	public void transferir(double valor, Conta destino) {
+	public boolean transferir(double valor, Conta destino) {
 
 		if (valor <= 0) {
 			System.out.println("Valor inválido para transferência.");
@@ -80,16 +85,21 @@ public class ContaPoupanca extends Conta {
 			destino.depositar(valor);
 			System.out.println("Transferência realizada com sucesso!");
 			System.out.println("Data: " + sdf.format(date));
+			contaP.add(sdf.format(date)+" Tranferencia "+ valor);
+			return true;
 		}
+		return false;
 	}
 
 	public void extrato() {
 		
-		System.out.println("Extrato atual de conta poupança");
+		System.out.println("Extrato atual de conta poupanca");
 		System.out.println("Agência: " +"1" +"     conta: " + getNumero());
-		System.out.println("Cliente: " + ((Pessoa)(titular)).getNome());	
-		
+		System.out.println("Cliente: " + ((Pessoa)(titular)).getNome());
+		for (String i : contaP) {
+			System.out.println(i);
 		}
+	}
 	
 	@Override
 	public void relatorio() {

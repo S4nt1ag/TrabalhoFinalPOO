@@ -60,18 +60,9 @@ public abstract class Conta implements Aplicacao {
 		return false;
 	}
 
-	public void transferir(double valor, Conta contaDestino) {
+	public boolean transferir(double valor, Conta contaDestino) {
+		return false;
 		
-		if(this.saldo < valor) {
-            System.out.println("Seu saldo é insuficiente!");
-        }
-        else {
-            this.saldo -= valor;
-            contaDestino.saldo += valor;
-
-
-            System.out.println("Seu saldo é de: " + this.saldo);
-        }
 		
 	}
 
