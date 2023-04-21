@@ -4,9 +4,8 @@ import java.util.Scanner;
 
 import contas.Conta;
 
-public class Menu
-
-{
+public class Menu {
+	
 	public char escolha = ' ';
 	String cpf;
 	String senha;
@@ -69,6 +68,7 @@ public class Menu
 
 		do {
 
+			System.out.println("-------Área do Cliente------");
 			System.out.println("Escolha uma opção: ");
 			System.out.println("1 - Movimentações na Conta.");
 			System.out.println("2 - Relatórios.");
@@ -83,75 +83,18 @@ public class Menu
 				
 				break;
 				
-				System.out.println("Movimentações na conta ");
-				System.out.println("Escolha uma opção: ");
-				System.out.println("a. Saque.");
-				System.out.println("b. Depósito.");
-				System.out.println("c. Transferência.");
-				System.out.println("d. Extrato da conta.");
-				System.out.println("e. Voltar ao menu anterior.");
-				System.out.println("f. Finalizar programa.");
-				escolha = read.next().charAt(0);
-
-				switch (escolha) {
-
-				case 'a':
-
-					System.out.println("Digite o valor do saque");
-					double valorSaque = read.nextDouble();
-					usuario.sacar(valorSaque);
-					menuCliente(usuario);
-
-					break;
-
-				case 'b':
-
-					System.out.println("Digite o valor do deposito");
-					double valorDeposito = read.nextDouble();
-					usuario.depositar(valorDeposito);
-					menuCliente(usuario);
-
-					break;
-
-				case 'c':
-					System.out.println("Digite o valor que deseja transferir");
-					double valorTransferencia = read.nextDouble();
-					usuario.transferir(valorTransferencia, conta2);
-					break;
-
-				case 'd':
-					System.out.println("Extrato da conta");
-
-					break;
-
-				case 'e':
-					System.out.println("Voltar ao menu anterior.");
-
-					break;
-
-				case 'f':
-					System.out.println("Sair do programa.");
-
-					break;
-				}
-
-				break;
-
 			case '2':
-				// relatorio();
+				relatorios();
 				break;
-			// outros casos
-
+				
 			case '3':
-
 				System.out.println("Sistema finalizado.");
 				break;
 
 			default:
 
 				System.out.println("Opção inválida! \n");
-				menuCliente();
-				read.next();
+				menuCliente(usuario);			
 
 			}
 
@@ -203,12 +146,112 @@ public class Menu
 
 	}
 
-	public void movimentacoes() {
+	public void movimentacoes(Conta usuario) {
+		
+		System.out.println("Movimentações da conta");
+		System.out.println("Escolha uma opção: ");
+		System.out.println("a. Saque.");
+		System.out.println("b. Depósito.");
+		System.out.println("c. Transferência.");
+		System.out.println("d. Extrato da conta.");
+		System.out.println("e. Voltar ao menu anterior.");
+		System.out.println("f. Finalizar programa.");
+		escolha = read.next().charAt(0);
+
+		switch (escolha) {
+
+		case 'a':
+
+			System.out.println("Digite o valor do saque");
+			double valorSaque = read.nextDouble();
+			usuario.sacar(valorSaque);
+			menuCliente(usuario);
+
+			break;
+
+		case 'b':
+
+			System.out.println("Digite o valor do deposito");
+			double valorDeposito = read.nextDouble();
+			usuario.depositar(valorDeposito);
+			menuCliente(usuario);
+
+			break;
+
+		case 'c':
+			System.out.println("Digite o valor que deseja transferir");
+			double valorTransferencia = read.nextDouble();
+			System.out.println("Para quem deseja transferir?");
+			Conta recebedor = read.nextLong();
+			usuario.transferir(valorTransferencia, recebedor);
+			break;
+
+		case 'd':
+			System.out.println("Extrato da conta");
+			usuario.extrato();
+			break;
+
+		case 'e':
+			menuCliente(usuario);
+			break;
+
+		case 'f':
+			System.out.println("Programa finalizado.");
+			break;
+		}
+
+		break;
+	}
+	
+	public void relatorios() {
+		
+		System.out.println("Relatórios");
+		System.out.println("Escolha uma opção: ");
+		System.out.println("a. Saldo.");
+		System.out.println("b. Relatório de tributação da conta corrente.");
+		System.out.println("c. Relatório de Rendimento da poupança.");
+		System.out.println("d. Relatório de Seguro.");
+		System.out.println("e. Voltar ao menu anterior.");
+		System.out.println("f. Sair.");
+		escolha = read.next().charAt(0);
+		
+		switch (escolha) {
+
+		case 'a':
+
+			System.out.println("Saldo atual:");
+			break;
+
+		case 'b':
+
+			System.out.println("Relatório de tributação da conta corrente");
+			
+			break;
+
+		case 'c':
+			System.out.println("Relatório de Rendimento da poupança");
+			
+			break;
+
+		case 'd':
+			System.out.println("Relatório de Seguro.");
+			
+			break;
+
+		case 'e':
+			menuCliente();
+			break;
+
+		case 'f':
+			System.out.println("Programa finalizado.");
+			break;
+		}
+
+		break;			
 		
 	}
 	
-	
-	public void menuGerente(Conta usuario, Conta conta2) {
+	public void menuGerente(Conta usuario) {
 
 		do {
 
@@ -264,8 +307,9 @@ public class Menu
 					break;
 				}
 				
-				
 				break;
+			
+	}				
 
 	public void menuDiretor(Conta usuario, Conta conta2) {
 
