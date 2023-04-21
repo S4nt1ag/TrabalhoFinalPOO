@@ -1,6 +1,6 @@
 ----------- RELATÓRIO RENDIMENTO POUPANÇA -----------
 
              Saldo: R$ 3000,00
-             Valor Aplicado : R$ 250,00
-             Quantidade de dias: R$ 4
-             Rendimento: R$ 9,50
+             Valor Aplicado : R$ 22,00
+             Quantidade de dias: R$ 12
+             Rendimento: R$ 12,48
