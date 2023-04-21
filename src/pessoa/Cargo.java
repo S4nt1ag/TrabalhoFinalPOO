@@ -4,4 +4,3 @@ public enum Cargo {
 	CLIENTE, GERENTE, DIRETOR, PRESIDENTE
 }
 
-//ve agora 2

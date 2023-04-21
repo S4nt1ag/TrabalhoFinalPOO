@@ -1,5 +1,8 @@
 package contas;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,7 +14,10 @@ import pessoa.Pessoa;
 public class ContaPoupanca extends Conta {
 
 	Scanner read = new Scanner(System.in);
-	public final double TAXA_RENDIMENTO = 0.1;
+	public final double TAXA_RENDIMENTO = 0.022;
+	int diasInvestidos;
+	double rendimento = 0;
+	double valorAplicado ;
 
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	Date date = new Date();
@@ -23,17 +29,15 @@ public class ContaPoupanca extends Conta {
 
 	public double geraRelatorioRendimento() {
 
-		int diasInvestidos;
-		double rendimento = 0;
-		double valorAplicado;
-
-		System.out.println("Qual capital será investido");
-		valorAplicado = read.nextDouble();
+		
+		
+		System.out.println("Digite o valor que deseja aplicar: ");
+		valorAplicado= read.nextDouble();
 
 		System.out.println("Informe a quantidade de dias que o capital ficará aplicado: ");
 		diasInvestidos = read.nextInt();
 
-		rendimento = (valorAplicado * 0.022) + diasInvestidos;
+		rendimento = (valorAplicado * TAXA_RENDIMENTO) + diasInvestidos;
 		return rendimento;
 
 	}
@@ -103,7 +107,24 @@ public class ContaPoupanca extends Conta {
 
 	@Override
 	public void relatorio() {
-		// TODO Auto-generated method stub
+		
+		try {
+			
+	        FileWriter arq = new FileWriter("relatorioContaPoupanca.txt");
+	        PrintWriter gravarArq = new PrintWriter(arq);
+	        
+	        gravarArq.println("----------- RELATÓRIO RENDIMENTO POUPANÇA -----------\n");
+	        gravarArq.printf("             Saldo: R$ %.2f%n", this.saldo);
+	        gravarArq.printf("             Valor Aplicado : R$ %.2f%n", valorAplicado);
+	        gravarArq.printf("             Quantidade de dias: R$ %d%n", diasInvestidos);
+	        gravarArq.printf("             Rendimento: R$ %.2f%n", rendimento);
+	        	        
+	        arq.close();
+	        System.out.println("relatorio gerado!");
+	        
+	    } catch (IOException e) {
+	        System.out.println(" " + e.getMessage());
+	    }
 
 	}
 

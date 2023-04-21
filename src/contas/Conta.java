@@ -1,5 +1,7 @@
 package contas;
 
+import java.io.IOException;
+
 import interfaces.Aplicacao;
 import pessoa.Pessoa;
 
@@ -82,6 +84,11 @@ public abstract class Conta implements Aplicacao {
 }
 
 	public void extrato() {
+		
+	}
+
+	public void relatorio() throws IOException {
+		// TODO Auto-generated method stub
 		
 	}
 }

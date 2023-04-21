@@ -1,5 +1,9 @@
 package contas;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,6 +16,8 @@ public class ContaCorrente extends Conta {
 	public static final double TAXA_SAQUE = 0.10;
 	public static final double TAXA_DEPOSITO = 0.10;
 	public static final double TAXA_TRANSFERENCIA = 0.20;
+	
+	private double totalGasto;
 
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	Date date = new Date();
@@ -20,6 +26,7 @@ public class ContaCorrente extends Conta {
 
 	public ContaCorrente(int numero, Pessoa titular, double saldo, TipoConta tipo) {
 		super(numero, titular, saldo, tipo);
+		this.totalGasto = 0.0;
 	}
 
 	/* 1. MOVIMENTAÇÕES NA CONTA */
@@ -29,12 +36,14 @@ public class ContaCorrente extends Conta {
 
 		if (valor + TAXA_SAQUE <= this.saldo) {
 			this.saldo -= valor + TAXA_SAQUE;
+			this.totalGasto=valor+TAXA_SAQUE;
 			System.out.println("Saque realizado com sucesso!");
 			System.out.println("Data: " + sdf.format(date));
 			contaC.add(sdf.format(date) + " Saque " + valor);
 			return true;
 
 		} else if (valor + TAXA_SAQUE > this.saldo) {
+			
 			System.out.println("Saldo insuficiente.");
 
 		} else {
@@ -53,6 +62,7 @@ public class ContaCorrente extends Conta {
 			return false;
 		} else {
 			this.saldo += valor - TAXA_DEPOSITO;
+			this.totalGasto += TAXA_DEPOSITO;
 			System.out.println("Depósito realizado com sucesso!");
 			System.out.println("Data: " + sdf.format(date));
 			contaC.add(sdf.format(date) + " Depósito " + valor);
@@ -73,6 +83,7 @@ public class ContaCorrente extends Conta {
 			double valorTransferencia = valor;
 			this.saldo -= valorTransferencia;
 			destino.depositar(valor); //alterar nome depois 
+			this.totalGasto += valor+TAXA_TRANSFERENCIA;
 			System.out.println("Transferência realizada com sucesso!");
 			System.out.println("Data: " + sdf.format(date));
 			contaC.add(sdf.format(date) + " Tranferencia " + valor);
@@ -80,13 +91,18 @@ public class ContaCorrente extends Conta {
 		}
 		return false;
 	}
+	
+	public double getTotalGastos() {
+        return totalGasto;
+    }
 
 	/* d. EXTRATO */
 	public void extrato() {
 
 		System.out.println("Extrato atual de conta corrente");
-		System.out.println("Agência: " + "1" + "     conta: " + getNumero());
+		System.out.println("Agência: " + "1" + "     Conta: " + getNumero());
 		System.out.println("Cliente: " + ((Pessoa) (titular)).getNome());
+		
 		for (String i : contaC) {
 			System.out.println(i);
 		}
@@ -96,10 +112,31 @@ public class ContaCorrente extends Conta {
 	/* RELATÓRIO */
 	@Override
 	public void relatorio() {
-		System.out.println("Relatório: ");
-
+	    
+		try {
+			
+	        FileWriter arq = new FileWriter("relatorioContaCorrente.txt");
+	        PrintWriter gravarArq = new PrintWriter(arq);
+	        
+	        gravarArq.println("----------- RELATÓRIO DE TRIBUTAÇÃO DE CONTA CORRENTE -----------\n");
+	        gravarArq.printf("            Saldo: R$ %.2f%n", this.saldo);
+	        gravarArq.printf("            Total gasto em operações: R$ %.2f%n", this.totalGasto);
+	        gravarArq.println("            Taxa de saque: R$" + ContaCorrente.TAXA_SAQUE);
+	        gravarArq.println("            Taxa de depósito: R$" + ContaCorrente.TAXA_DEPOSITO);
+	        gravarArq.println("            Taxa de transferência: R$" + ContaCorrente.TAXA_TRANSFERENCIA);
+	        
+	        arq.close();
+	        
+	        System.out.println("Relatório em .txt gerado com sucesso!");
+	        
+	    } catch (IOException e) {
+	        System.out.println(" " + e.getMessage());
+	    }
 	}
 
+
+
+	
 	@Override
 	public String toString() {
 		return "ContaCorrente [numero=" + numero + ", titular=" + titular + ", saldo=" + saldo + ", tipo=" + tipo + "]";
