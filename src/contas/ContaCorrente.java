@@ -19,7 +19,7 @@ public class ContaCorrente extends Conta {
 	
 	private double totalGasto;
 
-	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss");
 	Date date = new Date();
 
 	List<String> contaC = new ArrayList<String>();
@@ -115,7 +115,7 @@ public class ContaCorrente extends Conta {
 	    
 		try {
 			
-	        FileWriter arq = new FileWriter("relatorioContaCorrente.txt");
+	        FileWriter arq = new FileWriter(".//relatorios//relatorioContaCorrente" + sdf.format(date) + ".txt");
 	        PrintWriter gravarArq = new PrintWriter(arq);
 	        
 	        gravarArq.println("----------- RELATÓRIO DE TRIBUTAÇÃO DE CONTA CORRENTE -----------\n");

@@ -20,8 +20,8 @@ public class SistemaBancario
 
 	{
 
-		Menu menu = new Menu();
-		menu.ChamaMenu();
+		/*Menu menu = new Menu();
+		menu.ChamaMenu();*/
 		
 		Pessoa pessoa1 = new Diretor("Isabel", "789456123", 4640, Cargo.DIRETOR, 2);
 		Conta conta1 = new ContaCorrente(22, pessoa1, 2000.00, TipoConta.CONTA_CORRENTE);
@@ -32,7 +32,7 @@ public class SistemaBancario
 		Conta conta2 = new ContaPoupanca(23, pessoa2, 3000.00, TipoConta.CONTA_POUPANCA);
 		System.out.println(conta2.toString());
 		
-		/*conta1.sacar(200.00);
+		conta1.sacar(200.00);
 		conta1.transferir(200.00, conta2);
 		conta1.depositar(200.00);
 		System.out.println();
@@ -52,7 +52,7 @@ public class SistemaBancario
 		System.out.println(conta1.getSaldo());
 		System.out.println(conta2.getSaldo());
 		conta1.relatorio();
-		conta2.relatorio(); */
+		conta2.relatorio(); 
 
 	}
 

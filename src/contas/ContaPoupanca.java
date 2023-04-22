@@ -23,7 +23,7 @@ public class ContaPoupanca extends Conta {
 	double tr=0.32/100;
 	double montante;
 
-	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss");
 	Date date = new Date();
 	List<String> contaP = new ArrayList<String>();
 
@@ -124,7 +124,7 @@ public class ContaPoupanca extends Conta {
 		
 		try {
 			
-	        FileWriter arq = new FileWriter("relatorioContaPoupanca.txt");
+	        FileWriter arq = new FileWriter(".//relatorios//relatorioContaPoupanca" + sdf.format(date) + ".txt");
 	        PrintWriter gravarArq = new PrintWriter(arq);
 	        
 	        gravarArq.println("----------- RELATÓRIO POUPANÇA -----------\n");
