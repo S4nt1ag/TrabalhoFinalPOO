@@ -1,6 +1,10 @@
------------ RELATÓRIO RENDIMENTO POUPANÇA -----------
+----------- RELATÓRIO POUPANÇA -----------
 
-             Saldo: R$ 3000,00
-             Valor Aplicado : R$ 22,00
-             Quantidade de dias: R$ 12
-             Rendimento: R$ 12,48
+             Saldo: R$ 3100,00
+
+----------- SIMULADOR DE RENDIMENTOS POUPANÇA -----------
+
+             Valor Aplicado : R$ 100,00
+             Quantidade de dias: 60
+             Montante ao final do período : R$ 101,65
+             Rendimento: R$ 1,65

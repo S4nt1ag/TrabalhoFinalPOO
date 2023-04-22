@@ -14,10 +14,14 @@ import pessoa.Pessoa;
 public class ContaPoupanca extends Conta {
 
 	Scanner read = new Scanner(System.in);
-	public final double TAXA_RENDIMENTO = 0.022;
+	
 	int diasInvestidos;
 	double rendimento = 0;
 	double valorAplicado ;
+	double taxaSelic = 13.75/100;
+	public double TAXA_RENDIMENTO; 
+	double tr=0.32/100;
+	double montante;
 
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	Date date = new Date();
@@ -30,14 +34,24 @@ public class ContaPoupanca extends Conta {
 	public double geraRelatorioRendimento() {
 
 		
-		
 		System.out.println("Digite o valor que deseja aplicar: ");
 		valorAplicado= read.nextDouble();
 
 		System.out.println("Informe a quantidade de dias que o capital ficará aplicado: ");
 		diasInvestidos = read.nextInt();
 
-		rendimento = (valorAplicado * TAXA_RENDIMENTO) + diasInvestidos;
+		if (taxaSelic>8.5/100) {                  // CASO SELIC > 8.5//
+			TAXA_RENDIMENTO = ((0.5/100)+tr)/30; // TAXA EQUIVALENTE EM DIAS // 
+		} 
+		
+		else if (taxaSelic<= 8.5/100) {                          // CASO SELIC <= 8.5//
+			TAXA_RENDIMENTO = (0.7*taxaSelic)/(12*30) +(tr/30); // TAXA EQUIVALENTE EM DIAS // 
+		}
+		
+		// CÁLCULO MONTANTE E RENDIMENTO //
+		montante = valorAplicado*(Math.pow((1+TAXA_RENDIMENTO),diasInvestidos));
+		rendimento = montante - valorAplicado;
+		
 		return rendimento;
 
 	}
@@ -113,14 +127,17 @@ public class ContaPoupanca extends Conta {
 	        FileWriter arq = new FileWriter("relatorioContaPoupanca.txt");
 	        PrintWriter gravarArq = new PrintWriter(arq);
 	        
-	        gravarArq.println("----------- RELATÓRIO RENDIMENTO POUPANÇA -----------\n");
+	        gravarArq.println("----------- RELATÓRIO POUPANÇA -----------\n");
 	        gravarArq.printf("             Saldo: R$ %.2f%n", this.saldo);
+	        gravarArq.println();
+	        gravarArq.println("----------- SIMULADOR DE RENDIMENTOS POUPANÇA -----------\n");
 	        gravarArq.printf("             Valor Aplicado : R$ %.2f%n", valorAplicado);
-	        gravarArq.printf("             Quantidade de dias: R$ %d%n", diasInvestidos);
+	        gravarArq.printf("             Quantidade de dias: %d%n", diasInvestidos);
+	        gravarArq.printf("             Montante ao final do período : R$ %.2f%n", montante);
 	        gravarArq.printf("             Rendimento: R$ %.2f%n", rendimento);
 	        	        
 	        arq.close();
-	        System.out.println("relatorio gerado!");
+	        System.out.println("Relatório gerado!");
 	        
 	    } catch (IOException e) {
 	        System.out.println(" " + e.getMessage());

@@ -15,7 +15,7 @@ public class ContaCorrente extends Conta {
 
 	public static final double TAXA_SAQUE = 0.10;
 	public static final double TAXA_DEPOSITO = 0.10;
-	public static final double TAXA_TRANSFERENCIA = 0.20;
+	public static final double TAXA_TRANSFERENCIA = 0.20;	
 	
 	private double totalGasto;
 
@@ -81,9 +81,9 @@ public class ContaCorrente extends Conta {
 
 		} else {
 			double valorTransferencia = valor;
-			this.saldo -= valorTransferencia;
-			destino.depositar(valor); //alterar nome depois 
-			this.totalGasto += valor+TAXA_TRANSFERENCIA;
+			this.saldo -= (valorTransferencia+TAXA_TRANSFERENCIA);
+			destino.depositar(valor);  
+			this.totalGasto += valor;
 			System.out.println("Transferência realizada com sucesso!");
 			System.out.println("Data: " + sdf.format(date));
 			contaC.add(sdf.format(date) + " Tranferencia " + valor);
@@ -121,9 +121,10 @@ public class ContaCorrente extends Conta {
 	        gravarArq.println("----------- RELATÓRIO DE TRIBUTAÇÃO DE CONTA CORRENTE -----------\n");
 	        gravarArq.printf("            Saldo: R$ %.2f%n", this.saldo);
 	        gravarArq.printf("            Total gasto em operações: R$ %.2f%n", this.totalGasto);
-	        gravarArq.println("            Taxa de saque: R$" + ContaCorrente.TAXA_SAQUE);
-	        gravarArq.println("            Taxa de depósito: R$" + ContaCorrente.TAXA_DEPOSITO);
-	        gravarArq.println("            Taxa de transferência: R$" + ContaCorrente.TAXA_TRANSFERENCIA);
+	        gravarArq.println("\n----------- TAXAS DE TRANSAÇÃO -----------------------------------\n");
+	        gravarArq.println("            Taxa de saque: R$ " + ContaCorrente.TAXA_SAQUE);
+	        gravarArq.println("            Taxa de depósito: R$ " + ContaCorrente.TAXA_DEPOSITO);
+	        gravarArq.println("            Taxa de transferência: R$ " + ContaCorrente.TAXA_TRANSFERENCIA);
 	        
 	        arq.close();
 	        
@@ -133,8 +134,6 @@ public class ContaCorrente extends Conta {
 	        System.out.println(" " + e.getMessage());
 	    }
 	}
-
-
 
 	
 	@Override

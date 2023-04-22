@@ -1,7 +1,10 @@
 ----------- RELATÓRIO DE TRIBUTAÇÃO DE CONTA CORRENTE -----------
 
-            Saldo: R$ 1999,70
-            Total gasto em operações: R$ 300,50
-            Taxa de saque: R$0.1
-            Taxa de depósito: R$0.1
-            Taxa de transferência: R$0.2
+            Saldo: R$ 1899,50
+            Total gasto em operações: R$ 400,30
+
+----------- TAXAS DE TRANSAÇÃO -----------------------------------
+
+            Taxa de saque: R$ 0.1
+            Taxa de depósito: R$ 0.1
+            Taxa de transferência: R$ 0.2
