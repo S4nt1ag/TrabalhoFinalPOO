@@ -72,6 +72,14 @@ public abstract class Conta implements Aplicacao {
 		
 	}
 
+	public Agencias getAgencia() {
+		return agencia;
+	}
+
+	public void setAgencia(Agencias agencia) {
+		this.agencia = agencia;
+	}
+
 	@Override
 	public String toString() {
 		return "Conta [numero=" + numero + ", titular=" + titular + ", saldo=" + saldo + ", tipo=" + tipo + "]";

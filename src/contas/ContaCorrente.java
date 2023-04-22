@@ -17,6 +17,7 @@ public class ContaCorrente extends Conta {
 	public static final double TAXA_TRANSFERENCIA = 0.20;
 
 	private double totalGasto;
+	private double totalTaxa = 0.0;
 
 	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss");
 	Date date = new Date();
@@ -83,6 +84,7 @@ public class ContaCorrente extends Conta {
 			this.saldo -= (valorTransferencia + TAXA_TRANSFERENCIA);
 			destino.depositar(valor);
 			this.totalGasto += valor;
+			this.totalTaxa += TAXA_TRANSFERENCIA;
 			System.out.println("Transferência realizada com sucesso!");
 			System.out.println("Data: " + sdf.format(date));
 			contaC.add(sdf.format(date) + " Tranferencia " + valor);
@@ -94,6 +96,12 @@ public class ContaCorrente extends Conta {
 	public double getTotalGastos() {
 		return totalGasto;
 	}
+	
+
+	public double getTotalTaxa() {
+		return totalTaxa;
+	}
+
 
 	/* d. EXTRATO */
 	public void extrato() {

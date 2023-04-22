@@ -9,6 +9,7 @@ import contas.Conta;
 import contas.ContaCorrente;
 import contas.ContaPoupanca;
 import contas.TipoConta;
+import entities.Product;
 import pessoa.Cargo;
 import pessoa.Cliente;
 import pessoa.Diretor;
@@ -17,13 +18,14 @@ import pessoa.Pessoa;
 import pessoa.Presidente;
 
 public class Menu {
-	ArrayList <Conta> listaCliente = new ArrayList<Conta>();
+	ArrayList<Conta> listaCliente = new ArrayList<Conta>();
 	List<Conta> a1 = new ArrayList<Conta>();
 	List<Conta> a2 = new ArrayList<Conta>();
 	List<Conta> a3 = new ArrayList<Conta>();
 	public char escolha = ' ';
 	String cpf;
 	String senha;
+	double totalCap = 0.0;
 
 	Scanner read = new Scanner(System.in);
 
@@ -152,6 +154,8 @@ public class Menu {
 				((ContaCorrente) cliente).OlharRelatorio();
 			} catch (ClassCastException e) {
 				System.out.println("essa conta não é corrente");
+
+			} finally {
 				menuCliente(cliente);
 			}
 
@@ -163,6 +167,7 @@ public class Menu {
 				((ContaPoupanca) cliente).geraRelatorioRendimento();
 			} catch (ClassCastException e) {
 				System.out.println("essa conta não é poupança");
+			} finally {
 				menuCliente(cliente);
 			}
 			break;
@@ -312,6 +317,7 @@ public class Menu {
 				((ContaCorrente) gerente).OlharRelatorio();
 			} catch (ClassCastException e) {
 				System.out.println("essa conta não é corrente");
+			} finally {
 				menuGerente(gerente);
 			}
 
@@ -323,17 +329,30 @@ public class Menu {
 				((ContaPoupanca) gerente).geraRelatorioRendimento();
 			} catch (ClassCastException e) {
 				System.out.println("essa conta não é poupança");
+
+			} finally {
 				menuGerente(gerente);
 			}
 			break;
 
 		case 'd':
-			if ((gerente).getNumeroAgencia() == 1) {
-				
-				
+			if (gerente.getAgencia() == Agencias.A1) {
+				for (Conta p : a1) {
+					System.out.println(p);
+				}
+
+			} else if (gerente.getAgencia() == Agencias.A2) {
+				for (Conta p : a2) {
+					System.out.println(p);
+				}
+
+			} else {
+				for (Conta p : a3) {
+					System.out.println(p);
+				}
 			}
-			
-				menuGerente(gerente);
+
+			menuGerente(gerente);
 			break;
 
 		case 'e':
@@ -475,6 +494,8 @@ public class Menu {
 				((ContaCorrente) diretor).OlharRelatorio();
 			} catch (ClassCastException e) {
 				System.out.println("essa conta não é corrente");
+
+			} finally {
 				menuDiretor(diretor);
 			}
 
@@ -486,12 +507,15 @@ public class Menu {
 				((ContaPoupanca) diretor).geraRelatorioRendimento();
 			} catch (ClassCastException e) {
 				System.out.println("essa conta não é poupança");
+			} finally {
 				menuDiretor(diretor);
 			}
 			break;
 
 		case 'd':
-			System.out.println("Relatório de Contas não disponível.\n");
+			for (Conta p : listaCliente) {
+				System.out.println(p);
+			}
 			menuDiretor(diretor);
 			break;
 
@@ -529,7 +553,7 @@ public class Menu {
 			break;
 
 		case '2':
-
+			relatoriosPresidente(presidente);
 			break;
 
 		case '3':
@@ -574,10 +598,12 @@ public class Menu {
 			System.out.println("Digite o valor que deseja transferir");
 			double valorTransferencia = read.nextDouble();
 			presidente.transferir(100.00, presidente);
+			menuPresidente(presidente);
 			break;
 
 		case 'd':
 			presidente.extrato();
+			menuPresidente(presidente);
 			break;
 
 		case 'e':
@@ -598,10 +624,82 @@ public class Menu {
 
 	}
 
+	public void relatoriosPresidente(Conta presidente) {
+
+		System.out.println("\nRelatórios");
+		System.out.println("Escolha uma opção: ");
+		System.out.println("a. Saldo.");
+		System.out.println("b. Relatório de tributação da conta corrente.");
+		System.out.println("c. Relatório de Rendimento da poupança.");
+		System.out.println("d. Relatório total.");
+		System.out.println("e. Relatório Clientes");
+		System.out.println("f. Voltar ao menu anterior.");
+		System.out.println("g. Sair.");
+		escolha = read.next().charAt(0);
+
+		switch (escolha) {
+
+		case 'a':
+
+			System.out.println("Saldo atual:");
+			System.out.println(presidente.getSaldo());
+			menuPresidente(presidente);
+			break;
+
+		case 'b':
+			try {
+				System.out.println("Relatório de Rendimento Conta Corrente");
+				((ContaCorrente) presidente).OlharRelatorio();
+			} catch (ClassCastException e) {
+				System.out.println("essa conta não é corrente");
+				menuPresidente(presidente);
+			}
+
+			break;
+
+		case 'c':
+			try {
+				System.out.println("Relatório de Rendimento da poupança");
+				((ContaPoupanca) presidente).geraRelatorioRendimento();
+			} catch (ClassCastException e) {
+				System.out.println("essa conta não é poupança");
+
+			} finally {
+				menuPresidente(presidente);
+			}
+			break;
+
+		case 'd':
+			System.out.printf("O valor total de capital do bando é: %.2f%n", totalCap);
+			menuPresidente(presidente);
+			break;
+
+		case 'e':
+			for (Conta p : listaCliente) {
+				System.out.println(p);
+			}
+			menuPresidente(presidente);
+			break;
+		case 'f':
+			menuPresidente(presidente);
+			break;
+
+		case 'g':
+			System.out.println("Programa finalizado.");
+			break;
+
+		default:
+			System.out.println("Opção inválida! \n");
+			relatoriosPresidente(presidente);
+		}
+
+	}
+
 	// ------------------------------------------//
 
 	/// MENU PRINCIPAL: ///
 
+	@SuppressWarnings("resource")
 	public void ChamaMenu()
 
 	{
@@ -612,22 +710,29 @@ public class Menu {
 		Pessoa pessoa1 = new Diretor("Isabel", "789456123", 4640, Cargo.DIRETOR, 2);
 		Conta conta1 = new ContaCorrente(22, pessoa1, 2000.00, TipoConta.CONTA_CORRENTE, Agencias.A1);
 		a1.add(conta1);
+		listaCliente.add(conta1);
+		totalCap += conta1.getSaldo() + ((ContaCorrente) conta1).getTotalTaxa();
 		System.out.println(conta1.toString());
 
 		Pessoa pessoa2 = new Presidente("Santiago", "123456789", 1234, Cargo.PRESIDENTE, 2);
 		Conta conta2 = new ContaPoupanca(23, pessoa2, 3000.00, TipoConta.CONTA_POUPANCA, Agencias.A2);
 		a2.add(conta2);
+		listaCliente.add(conta2);
+		totalCap += conta2.getSaldo();
 		System.out.println(conta2.toString());
 
 		Pessoa pessoa3 = new Cliente("Isabel", "789456122", 4640, Cargo.CLIENTE);
 		Conta conta3 = new ContaCorrente(25, pessoa3, 2000.00, TipoConta.CONTA_CORRENTE, Agencias.A3);
 		a3.add(conta3);
 		listaCliente.add(conta3);
+		totalCap += conta3.getSaldo() + ((ContaCorrente) conta3).getTotalTaxa();
 		System.out.println(conta3.toString());
 
 		Pessoa pessoa4 = new Gerente("Luiz", "147258369", 4640, Cargo.GERENTE, 2);
-		Conta conta4 = new ContaCorrente(24, pessoa4, 1000.00, TipoConta.CONTA_CORRENTE,Agencias.A2);
-		a2.add(conta4);
+		Conta conta4 = new ContaCorrente(24, pessoa4, 1000.00, TipoConta.CONTA_CORRENTE, Agencias.A3);
+		a3.add(conta4);
+		listaCliente.add(conta4);
+		totalCap += conta4.getSaldo() + ((ContaCorrente) conta4).getTotalTaxa();
 		System.out.println(conta4.toString());
 
 		Scanner scanner = new Scanner(System.in);
