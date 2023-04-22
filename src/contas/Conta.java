@@ -12,13 +12,17 @@ public abstract class Conta implements Aplicacao {
 	protected Pessoa titular;
 	protected double saldo;
 	protected TipoConta tipo;
+	protected Agencias agencia;
+	
+	
 
-	public Conta(int numero, Pessoa titular, double saldo, TipoConta tipo) {
+	public Conta(int numero, Pessoa titular, double saldo, TipoConta tipo, Agencias agencia) {
 		super();
 		this.numero = numero;
 		this.titular = titular;
 		this.saldo = saldo;
 		this.tipo = tipo;
+		this.agencia = agencia;
 	}
 
 	public double getSaldo() {

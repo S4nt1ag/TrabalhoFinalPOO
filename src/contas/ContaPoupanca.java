@@ -27,8 +27,10 @@ public class ContaPoupanca extends Conta {
 	Date date = new Date();
 	List<String> contaP = new ArrayList<String>();
 
-	public ContaPoupanca(int numero, Pessoa titular, double saldo, TipoConta tipo) {
-		super(numero, titular, saldo, tipo);
+	
+
+	public ContaPoupanca(int numero, Pessoa titular, double saldo, TipoConta tipo, Agencias agencia) {
+		super(numero, titular, saldo, tipo, agencia);
 	}
 
 	public double geraRelatorioRendimento() {
