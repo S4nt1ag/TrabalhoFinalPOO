@@ -54,8 +54,6 @@ public class SistemaBancario
 		conta1.relatorio();
 		conta2.relatorio(); */
 		
-		//teste
-
 	}
 
 }

@@ -1,6 +1,8 @@
 package principal;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -9,7 +11,6 @@ import contas.Conta;
 import contas.ContaCorrente;
 import contas.ContaPoupanca;
 import contas.TipoConta;
-import entities.Product;
 import pessoa.Cargo;
 import pessoa.Cliente;
 import pessoa.Diretor;
@@ -17,11 +18,18 @@ import pessoa.Gerente;
 import pessoa.Pessoa;
 import pessoa.Presidente;
 
-public class Menu {
+public class Menu /* implements Comparable<Pessoa> */ {
+	
+	/* public int compareTo(Pessoa p) {
+		return ((Pessoa) p).getNome().compareTo(p.getNome());
+	} */
+	
 	ArrayList<Conta> listaCliente = new ArrayList<Conta>();
+	
 	List<Conta> a1 = new ArrayList<Conta>();
 	List<Conta> a2 = new ArrayList<Conta>();
 	List<Conta> a3 = new ArrayList<Conta>();
+	
 	public char escolha = ' ';
 	String cpf;
 	String senha;
@@ -407,7 +415,7 @@ public class Menu {
 
 	}
 
-	// 1: MOVIMENTAÇÕES NA CONTA Diretor//
+	// 1: MOVIMENTAÇÕES NA CONTA DIRETOR//
 	public void movimentacoesDiretor(Conta diretor) {
 
 		System.out.println("\nMovimentações da conta");
@@ -468,6 +476,7 @@ public class Menu {
 
 	}
 
+	// 2: RELATÓRIOS DIRETOR//
 	public void relatoriosDiretor(Conta diretor) {
 
 		System.out.println("\nRelatórios");
@@ -513,9 +522,25 @@ public class Menu {
 			break;
 
 		case 'd':
+			
+			Collections.sort(listaCliente, new Comparator<Conta>() {
+
+				@Override
+				public int compare(Conta o1, Conta o2) {
+					String nome1 = o1.getTitular().getNome();
+					String nome2 = o2.getTitular().getNome();								
+					return nome1.compareTo(nome2);
+				}
+				
+			});
+			
 			for (Conta p : listaCliente) {
+				
+				//listaCliente.sort(Comparator.comparing(null, null));
+			
 				System.out.println(p);
-			}
+			} 
+			
 			menuDiretor(diretor);
 			break;
 
@@ -624,6 +649,7 @@ public class Menu {
 
 	}
 
+	// 2: MOVIMENTAÇÕES NA CONTA PRESIDENTE//
 	public void relatoriosPresidente(Conta presidente) {
 
 		System.out.println("\nRelatórios");
@@ -632,7 +658,7 @@ public class Menu {
 		System.out.println("b. Relatório de tributação da conta corrente.");
 		System.out.println("c. Relatório de Rendimento da poupança.");
 		System.out.println("d. Relatório total.");
-		System.out.println("e. Relatório Clientes");
+		System.out.println("e. Relatório Clientes.");
 		System.out.println("f. Voltar ao menu anterior.");
 		System.out.println("g. Sair.");
 		escolha = read.next().charAt(0);
@@ -676,6 +702,9 @@ public class Menu {
 
 		case 'e':
 			for (Conta p : listaCliente) {
+				
+				
+				
 				System.out.println(p);
 			}
 			menuPresidente(presidente);
