@@ -1,9 +1,17 @@
 package principal;
 
 import java.util.Scanner;
+
 import contas.Conta;
-import contas.ContaPoupanca;
 import contas.ContaCorrente;
+import contas.ContaPoupanca;
+import contas.TipoConta;
+import pessoa.Cargo;
+import pessoa.Cliente;
+import pessoa.Diretor;
+import pessoa.Gerente;
+import pessoa.Pessoa;
+import pessoa.Presidente;
 
 public class Menu {
 	
@@ -133,14 +141,26 @@ public class Menu {
 			break;
 
 		case 'b':
-			System.out.println("Relatório de tributação da conta corrente");
-			//cliente.relatorio();			
+			try {
+				System.out.println("Relatório de Rendimento Conta Corrente");
+				((ContaCorrente) cliente).OlharRelatorio();
+				}
+				catch (ClassCastException e) {
+					System.out.println("essa conta não é corrente");
+					menuCliente(cliente);
+				}
+		
 			break;
 
 		case 'c':
+			try {
 			System.out.println("Relatório de Rendimento da poupança");
 			((ContaPoupanca) cliente).geraRelatorioRendimento();
-			//cliente.relatorio();	
+			}
+			catch (ClassCastException e) {
+				System.out.println("essa conta não é poupança");
+				menuCliente(cliente);
+			}
 			break;
 
 		case 'd':
@@ -285,14 +305,26 @@ public class Menu {
 			break;
 
 		case 'b':
-			System.out.println("Relatório de tributação da conta corrente");
-			//gerente.relatorio();			
+			try {
+				System.out.println("Relatório de Rendimento Conta Corrente");
+				((ContaCorrente) gerente).OlharRelatorio();
+				}
+				catch (ClassCastException e) {
+					System.out.println("essa conta não é corrente");
+					menuGerente(gerente);
+				}
+		
 			break;
 
 		case 'c':
+			try {
 			System.out.println("Relatório de Rendimento da poupança");
 			((ContaPoupanca) gerente).geraRelatorioRendimento();
-			//gerente.relatorio();	
+			}
+			catch (ClassCastException e) {
+				System.out.println("essa conta não é poupança");
+				menuGerente(gerente);
+			}
 			break;
 
 		case 'd':
@@ -324,13 +356,98 @@ public class Menu {
 		System.out.println("Escolha uma opção: ");
 		System.out.println("1 - Movimentações na Conta");
 		System.out.println("2 - Relatórios");
-		System.out.println("3 - Relátorio Gerente");
-		System.out.println("4 - Relatório Diretor");
-		System.out.println("5 - Sair");
+		System.out.println("3 - Sair");
 		escolha = read.next().charAt(0);
+		 
+	    switch (escolha) {
+		
+		    case '1':
+			   movimentacoesDiretor(diretor);
+			   break;
+			
+		    case '2' :
+			
+			    relatoriosDiretor(diretor);
+			    break;
+			    
+		    case '3' :
+				
+		    	System.out.println("Programafinalizado. \n");
+			    break;    
+			
+		    default:
+			    System.out.println("Opção inválida!\n");
+				menuDiretor(diretor);	
+	    }while (escolha != 3);
+         
+	
+	 } 
 
 									
-	}		
+			
+	
+	public void relatoriosDiretor(Conta diretor) {
+		
+		System.out.println("\nRelatórios");
+		System.out.println("Escolha uma opção: ");
+		System.out.println("a. Saldo.");
+		System.out.println("b. Relatório de tributação da conta corrente.");
+		System.out.println("c. Relatório de Rendimento da poupança.");
+		System.out.println("d. Relatório de Agências.");
+		System.out.println("e. Voltar ao menu anterior.");
+		System.out.println("f. Sair.");
+		escolha = read.next().charAt(0);
+		
+		switch (escolha) {
+
+		case 'a':
+
+			System.out.println("Saldo atual:");
+			System.out.println(diretor.getSaldo());
+			break;
+
+		case 'b':
+			try {
+				System.out.println("Relatório de Rendimento Conta Corrente");
+				((ContaCorrente) diretor).OlharRelatorio();
+				}
+				catch (ClassCastException e) {
+					System.out.println("essa conta não é corrente");
+					menuDiretor(diretor);
+				}
+		
+			break;
+
+		case 'c':
+			try {
+			System.out.println("Relatório de Rendimento da poupança");
+			((ContaPoupanca) diretor).geraRelatorioRendimento();
+			}
+			catch (ClassCastException e) {
+				System.out.println("essa conta não é poupança");
+				menuDiretor(diretor);
+			}
+			break;
+
+		case 'd':
+			System.out.println("Relatório de Contas não disponível.\n");
+			menuDiretor(diretor);
+			break;
+
+		case 'e':
+			menuDiretor(diretor);
+			break;
+
+		case 'f':
+			System.out.println("Programa finalizado.");
+			break;
+		
+		default:
+			System.out.println("Opção inválida! \n");
+			relatoriosDiretor(diretor);		
+		} 
+		
+	}
                
 
 	// ------------------------------------------//	
@@ -425,53 +542,44 @@ public class Menu {
 			System.out.println("--------------------- Sistema Bancário JK  -----------------------");
 			System.out.println("------------------------------------------------------------------\n");
 
-			System.out.print("Digite seu CPF: ");
-			cpf = read.next();
-
-			System.out.print("Digite sua senha: ");
-			senha = read.next();
-
-			validaCadastro();
-		}
-
-	
-	public void validaCadastro()
-
-		{
-
-			if ((cpf.equals("cliente") && senha.equals("cliente"))) {
-
-				
-				Conta cliente = null;
-				menuCliente(cliente);
+			Pessoa pessoa1 = new Diretor("Isabel", "789456123", 4640, Cargo.DIRETOR, 2);
+			Conta conta1 = new ContaCorrente(22, pessoa1, 2000.00, TipoConta.CONTA_CORRENTE);
+			System.out.println(conta1.toString());
 			
+			Pessoa pessoa2 = new Presidente("Santiago", "123456789", 1234, Cargo.PRESIDENTE, 2);
+			Conta conta2 = new ContaPoupanca(23, pessoa2, 3000.00, TipoConta.CONTA_POUPANCA);
+			System.out.println(conta2.toString());
+
+			Pessoa pessoa3 = new Cliente("Isabel", "789456122", 4640, Cargo.CLIENTE);
+			Conta conta3 = new ContaCorrente(25, pessoa3, 2000.00, TipoConta.CONTA_CORRENTE);
+			System.out.println(conta3.toString());
 			
-			} else if ((cpf.equals("gerente") && senha.equals("gerente"))) {
-
-				Conta gerente = null;
-				menuGerente(gerente);
-
-			} else if ((cpf.equals("diretor") && senha.equals("diretor"))) {
-
-				Conta diretor = null;
-				menuDiretor(diretor);
-
-			} else if ((cpf.equals("presidente") && senha.equals("presidente"))) {
-
-				Conta presidente = null;
-				menuPresidente(presidente);
-			}
-
-			else {
-
-				System.out.println("CPF ou senha inválidos!");
-				System.out.println("Tente novamente!");
-
-				ChamaMenu();
-
-			}
-
+			Pessoa pessoa4 = new Gerente("Luiz", "147258369", 4640, Cargo.GERENTE, 2);
+			Conta conta4 = new ContaCorrente(24, pessoa4, 1000.00, TipoConta.CONTA_CORRENTE);
+			System.out.println(conta4.toString());
+			
+			 Scanner scanner = new Scanner(System.in);
+		        System.out.println("Digite seu CPF: ");
+		        String cpf = scanner.nextLine();
+		        
+		        System.out.println("Digite sua senha: ");
+		        int senha = scanner.nextInt();
+		        
+		        if (pessoa1.getCpf().equals(cpf) && pessoa1.getSenha() == senha) {
+		        	System.out.println("Seja Bem vindo(a): " + Cargo.DIRETOR);
+		        	menuDiretor(conta1);
+		        } else if (pessoa2.getCpf().equals(cpf) && pessoa2.getSenha() == senha) {
+		        	System.out.println("Seja Bem vindo(a): " + Cargo.PRESIDENTE);
+		        	menuPresidente(conta2);
+		        }else if (pessoa3.getCpf().equals(cpf) && pessoa3.getSenha() == senha) {
+			        	System.out.println("Seja Bem vindo(a): " + pessoa3.getNome());
+			        	menuCliente(conta3);
+			    }else if (pessoa4.getCpf().equals(cpf) && pessoa4.getSenha() == senha) {
+		        	System.out.println("Seja Bem vindo(a): " + Cargo.GERENTE);
+		        	menuGerente(conta4);
+			    } else {
+		        	System.out.println("CPF ou senha incorretos. Tente novamente.");
+		        }
 		}
-
 
 }

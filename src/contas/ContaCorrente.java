@@ -134,6 +134,16 @@ public class ContaCorrente extends Conta {
 	        System.out.println(" " + e.getMessage());
 	    }
 	}
+	
+	public void OlharRelatorio() {
+		System.out.println("----------- RELATÓRIO DE TRIBUTAÇÃO DE CONTA CORRENTE -----------\n");
+		System.out.printf("            Saldo: R$ %.2f%n", this.saldo);
+		System.out.printf("            Total gasto em operações: R$ %.2f%n", this.totalGasto);
+		System.out.println("\n----------- TAXAS DE TRANSAÇÃO -----------------------------------\n");
+		System.out.println("            Taxa de saque: R$ " + ContaCorrente.TAXA_SAQUE);
+		System.out.println("            Taxa de depósito: R$ " + ContaCorrente.TAXA_DEPOSITO);
+		System.out.println("            Taxa de transferência: R$ " + ContaCorrente.TAXA_TRANSFERENCIA);
+	}
 
 	
 	@Override
