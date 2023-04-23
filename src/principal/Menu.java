@@ -728,7 +728,7 @@ public class Menu /* implements Comparable<Pessoa> */ {
 
 	/// MENU PRINCIPAL: ///
 
-	@SuppressWarnings("resource")
+	
 	public void ChamaMenu()
 
 	{
