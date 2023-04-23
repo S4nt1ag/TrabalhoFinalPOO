@@ -24,8 +24,9 @@ public class ContaCorrente extends Conta {
 
 	List<String> contaC = new ArrayList<String>();
 
-	public ContaCorrente(int numero, Pessoa titular, double saldo, TipoConta tipo, Agencias agencia) {
-		super(numero, titular, saldo, tipo, agencia);
+	public ContaCorrente(int numero, Pessoa titular, double saldo,Agencias agencia) {
+		super(numero, titular, saldo, agencia);
+		this.tipo = TipoConta.CONTA_CORRENTE;
 
 	}
 

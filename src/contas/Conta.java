@@ -13,12 +13,12 @@ public abstract class Conta implements Aplicacao {
 	protected TipoConta tipo;
 	protected Agencias agencia;
 
-	public Conta(int numero, Pessoa titular, double saldo, TipoConta tipo, Agencias agencia) {
+	public Conta(int numero, Pessoa titular, double saldo,  Agencias agencia) {
 		super();
 		this.numero = numero;
 		this.titular = titular;
 		this.saldo = saldo;
-		this.tipo = tipo;
+		this.tipo = null;
 		this.agencia = agencia;
 	}
 
@@ -76,6 +76,7 @@ public abstract class Conta implements Aplicacao {
 		this.agencia = agencia;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Conta [numero=" + numero + ", titular=" + titular + ", saldo=" + saldo + ", tipo=" + tipo + "]";

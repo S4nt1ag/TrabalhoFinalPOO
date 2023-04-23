@@ -6,12 +6,12 @@ public abstract class Pessoa {
 	protected int senha;
 	protected Cargo tipo;
 
-	public Pessoa(String nome, String cpf, int senha, Cargo tipo) {
+	public Pessoa(String nome, String cpf, int senha) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.senha = senha;
-		this.tipo = tipo;
+		this.tipo = null;
 	}
 
 	public String getNome() {
@@ -24,6 +24,14 @@ public abstract class Pessoa {
 
 	public String getCpf() {
 		return this.cpf;
+	}
+
+	public Cargo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Cargo tipo) {
+		this.tipo = tipo;
 	}
 
 	public void setCpf(String cpf) {

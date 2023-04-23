@@ -1,5 +1,10 @@
 package principal;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -10,7 +15,6 @@ import contas.Agencias;
 import contas.Conta;
 import contas.ContaCorrente;
 import contas.ContaPoupanca;
-import contas.TipoConta;
 import pessoa.Cargo;
 import pessoa.Cliente;
 import pessoa.Diretor;
@@ -19,17 +23,18 @@ import pessoa.Pessoa;
 import pessoa.Presidente;
 
 public class Menu /* implements Comparable<Pessoa> */ {
-	
-	/* public int compareTo(Pessoa p) {
-		return ((Pessoa) p).getNome().compareTo(p.getNome());
-	} */
-	
+
+	/*
+	 * public int compareTo(Pessoa p) { return ((Pessoa)
+	 * p).getNome().compareTo(p.getNome()); }
+	 */
+
 	ArrayList<Conta> listaCliente = new ArrayList<Conta>();
-	
+
 	List<Conta> a1 = new ArrayList<Conta>();
 	List<Conta> a2 = new ArrayList<Conta>();
 	List<Conta> a3 = new ArrayList<Conta>();
-	
+
 	public char escolha = ' ';
 	String cpf;
 	String senha;
@@ -522,25 +527,25 @@ public class Menu /* implements Comparable<Pessoa> */ {
 			break;
 
 		case 'd':
-			
+
 			Collections.sort(listaCliente, new Comparator<Conta>() {
 
 				@Override
 				public int compare(Conta o1, Conta o2) {
 					String nome1 = o1.getTitular().getNome();
-					String nome2 = o2.getTitular().getNome();								
+					String nome2 = o2.getTitular().getNome();
 					return nome1.compareTo(nome2);
 				}
-				
+
 			});
-			
+
 			for (Conta p : listaCliente) {
-				
-				//listaCliente.sort(Comparator.comparing(null, null));
-			
+
+				// listaCliente.sort(Comparator.comparing(null, null));
+
 				System.out.println(p);
-			} 
-			
+			}
+
 			menuDiretor(diretor);
 			break;
 
@@ -702,9 +707,7 @@ public class Menu /* implements Comparable<Pessoa> */ {
 
 		case 'e':
 			for (Conta p : listaCliente) {
-				
-				
-				
+
 				System.out.println(p);
 			}
 			menuPresidente(presidente);
@@ -728,7 +731,6 @@ public class Menu /* implements Comparable<Pessoa> */ {
 
 	/// MENU PRINCIPAL: ///
 
-	
 	public void ChamaMenu()
 
 	{
@@ -736,55 +738,141 @@ public class Menu /* implements Comparable<Pessoa> */ {
 		System.out.println("--------------------- Sistema Bancário JK  -----------------------");
 		System.out.println("------------------------------------------------------------------\n");
 
-		Pessoa pessoa1 = new Diretor("Isabel", "789456123", 4640, Cargo.DIRETOR, 2);
-		Conta conta1 = new ContaCorrente(22, pessoa1, 2000.00, TipoConta.CONTA_CORRENTE, Agencias.A1);
-		a1.add(conta1);
-		listaCliente.add(conta1);
-		totalCap += conta1.getSaldo() + ((ContaCorrente) conta1).getTotalTaxa();
-		System.out.println(conta1.toString());
+		String path = "C:\\TrabalhoFinalPOO\\pessoas\\Pessoas.txt\\";
+		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+			String line = br.readLine();
 
-		Pessoa pessoa2 = new Presidente("Santiago", "123456789", 1234, Cargo.PRESIDENTE, 2);
-		Conta conta2 = new ContaPoupanca(23, pessoa2, 3000.00, TipoConta.CONTA_POUPANCA, Agencias.A2);
-		a2.add(conta2);
-		listaCliente.add(conta2);
-		totalCap += conta2.getSaldo();
-		System.out.println(conta2.toString());
+			line = br.readLine();
+			while (line != null) {
+				String[] vect = line.split(",");
+				String nome = vect[0];
+				String cpf = vect[1];
+				Integer senha = Integer.parseInt(vect[2]);
+				Integer numero = Integer.parseInt(vect[3]);
+				Double saldo = Double.parseDouble(vect[4]);
+				String cargo = vect[5];
+				String tipoConta = vect[6];
+				String agencia = vect[7];
+				Agencias agenciaEnum;
+				Pessoa pessoa = null;
+				Conta conta = null;
 
-		Pessoa pessoa3 = new Cliente("Isabel", "789456122", 4640, Cargo.CLIENTE);
-		Conta conta3 = new ContaCorrente(25, pessoa3, 2000.00, TipoConta.CONTA_CORRENTE, Agencias.A3);
-		a3.add(conta3);
-		listaCliente.add(conta3);
-		totalCap += conta3.getSaldo() + ((ContaCorrente) conta3).getTotalTaxa();
-		System.out.println(conta3.toString());
+				if (agencia.equals("A1")) {
+					agenciaEnum = Agencias.A1;
+				} else if (agencia.equals("A2")) {
+					agenciaEnum = Agencias.A2;
+				} else {
+					agenciaEnum = Agencias.A3;
+				}
+				switch (cargo) {
+				case "CLIENTE":
+					pessoa = new Cliente(nome, cpf, senha);
+					break;
 
-		Pessoa pessoa4 = new Gerente("Luiz", "147258369", 4640, Cargo.GERENTE, 2);
-		Conta conta4 = new ContaCorrente(24, pessoa4, 1000.00, TipoConta.CONTA_CORRENTE, Agencias.A3);
-		a3.add(conta4);
-		listaCliente.add(conta4);
-		totalCap += conta4.getSaldo() + ((ContaCorrente) conta4).getTotalTaxa();
-		System.out.println(conta4.toString());
+				case "GERENTE":
+					pessoa = new Gerente(nome, cpf, senha);
+					break;
 
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Digite seu CPF: ");
-		String cpf = scanner.nextLine();
+				case "DIRETOR":
+					pessoa = new Diretor(nome, cpf, senha);
+					break;
 
-		System.out.println("Digite sua senha: ");
-		int senha = scanner.nextInt();
+				case "PRESIDENTE":
+					pessoa = new Presidente(nome, cpf, senha);
+					break;
 
-		if (pessoa1.getCpf().equals(cpf) && pessoa1.getSenha() == senha) {
-			System.out.println("Seja Bem vindo(a): " + Cargo.DIRETOR);
-			menuDiretor(conta1);
-		} else if (pessoa2.getCpf().equals(cpf) && pessoa2.getSenha() == senha) {
-			System.out.println("Seja Bem vindo(a): " + Cargo.PRESIDENTE);
-			menuPresidente(conta2);
-		} else if (pessoa3.getCpf().equals(cpf) && pessoa3.getSenha() == senha) {
-			System.out.println("Seja Bem vindo(a): " + pessoa3.getNome());
-			menuCliente(conta3);
-		} else if (pessoa4.getCpf().equals(cpf) && pessoa4.getSenha() == senha) {
-			System.out.println("Seja Bem vindo(a): " + Cargo.GERENTE);
-			menuGerente(conta4);
-		} else {
-			System.out.println("CPF ou senha incorretos. Tente novamente.");
+				default:
+					break;
+				}
+				switch (tipoConta) {
+				case "CONTA_CORRENTE":
+					conta = new ContaCorrente(numero, pessoa, saldo, agenciaEnum);
+					break;
+				case "CONTA_POUPANCA":
+					conta = new ContaPoupanca(numero, pessoa, saldo, agenciaEnum);
+					break;
+				default:
+					break;
+				}
+				listaCliente.add(conta);
+				switch (agenciaEnum) {
+				case A1:
+					a1.add(conta);
+					break;
+				case A2:
+					a2.add(conta);
+					break;
+				case A3:
+					a3.add(conta);
+					break;
+
+				default:
+					break;
+				}
+
+				line = br.readLine();
+			}
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("Digite seu CPF: ");
+			String input_cpf = scanner.nextLine();
+
+			System.out.println("Digite sua senha: ");
+			int input_senha = scanner.nextInt();
+			for (Conta p : listaCliente) {
+				System.out.println(p);
+			}
+			for (int i = 0; i < listaCliente.size(); i++) {
+				String cpfLista = listaCliente.get(i).getTitular().getCpf();
+				int senhaLista = listaCliente.get(i).getTitular().getSenha();
+				Cargo cargoLista = listaCliente.get(i).getTitular().getTipo();
+
+				if (cpfLista.equals(input_cpf) && senhaLista == input_senha) {
+					System.out.println("Seja Bem vindo(a): " + cargoLista);
+					switch (cargoLista) {
+					case CLIENTE:
+						menuCliente(listaCliente.get(i));
+						break;
+					case GERENTE:
+						menuGerente(listaCliente.get(i));
+						break;
+					case DIRETOR:
+						menuDiretor(listaCliente.get(i));
+					case PRESIDENTE:
+						menuPresidente(listaCliente.get(i));
+					}
+
+					break;
+				}
+			}
+
+		} catch (Exception e) {
+			System.out.println("Error: linha invalida" + e.getMessage());
+			e.printStackTrace();
+		}
+	}
+
+	public void atualizaçãoConta() {
+
+		String path = "C:\\TrabalhoFinalPOO\\pessoas\\Pessoas.txt\\";
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
+			bw.newLine();
+			for (int i = 0; i < listaCliente.size(); i++) {
+				String nomeLista = listaCliente.get(i).getTitular().getNome();
+				String cpfLista = listaCliente.get(i).getTitular().getCpf();
+				int senhaLista = listaCliente.get(i).getTitular().getSenha();
+				int numeroLista = listaCliente.get(i).getNumero();
+				double saldoLista = listaCliente.get(i).getSaldo();
+				Cargo cargoLista = listaCliente.get(i).getTitular().getTipo();
+				String contaLista = listaCliente.get(i).getTipo().name();
+				String agenciaLista = listaCliente.get(i).getAgencia().name();
+
+				bw.write(nomeLista + "," + cpfLista + "," + senhaLista + "," + numeroLista + "," + saldoLista + ","
+						+ cargoLista + "," + contaLista + "," + agenciaLista);
+				bw.newLine();
+			}
+
+		} catch (IOException e) {
+			System.out.println("Error:" + e.getMessage());
 		}
 	}
 

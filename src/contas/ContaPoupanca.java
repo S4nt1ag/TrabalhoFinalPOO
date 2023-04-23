@@ -29,8 +29,9 @@ public class ContaPoupanca extends Conta {
 
 	
 
-	public ContaPoupanca(int numero, Pessoa titular, double saldo, TipoConta tipo, Agencias agencia) {
-		super(numero, titular, saldo, tipo, agencia);
+	public ContaPoupanca(int numero, Pessoa titular, double saldo, Agencias agencia) {
+		super(numero, titular, saldo, agencia);
+		this.tipo = TipoConta.CONTA_POUPANCA;
 	}
 
 	public double geraRelatorioRendimento() {
