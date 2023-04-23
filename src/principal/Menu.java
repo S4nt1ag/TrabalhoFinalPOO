@@ -657,7 +657,7 @@ public class Menu /* implements Comparable<Pessoa> */ {
 		System.out.println("a. Saldo.");
 		System.out.println("b. Relatório de tributação da conta corrente.");
 		System.out.println("c. Relatório de Rendimento da poupança.");
-		System.out.println("d. Relatório total.");
+		System.out.println("d. Relatório capital total Banco JK.");
 		System.out.println("e. Relatório Clientes.");
 		System.out.println("f. Voltar ao menu anterior.");
 		System.out.println("g. Sair.");
@@ -696,7 +696,7 @@ public class Menu /* implements Comparable<Pessoa> */ {
 			break;
 
 		case 'd':
-			System.out.printf("O valor total de capital do bando é: %.2f%n", totalCap);
+			System.out.printf("O valor total de capital do banco JK é: %.2f%n", totalCap);
 			menuPresidente(presidente);
 			break;
 
