@@ -49,158 +49,152 @@ public class Menu /* implements Comparable<Pessoa> */ {
 	// CASO 1: CLIENTE //
 	public void menuCliente(Conta cliente) {
 
-		do {
-
+		int escolha1 = 0;
+		while (escolha1 != 3) {
 			System.out.println("\n-------Área do Cliente------");
 			System.out.println("Escolha uma opção: ");
 			System.out.println("1 - Movimentações na Conta.");
 			System.out.println("2 - Relatórios.");
 			System.out.println("3 - Sair.");
-			escolha = read.next().charAt(0);
+			escolha1 = read.nextInt();
 
-			switch (escolha) {
+			switch (escolha1) {
 
-			case '1':
+			case 1:
 				movimentacoesCliente(cliente);
 				break;
 
-			case '2':
+			case 2:
 				relatoriosCliente(cliente);
 				break;
 
-			case '3':
+			case 3:
 				System.out.println("Sistema finalizado.");
+				escolha1 = 3;
+				atualizacaoConta();
 				break;
 
 			default:
 				System.out.println("Opção inválida! \n");
-				menuCliente(cliente);
+				// menuCliente(cliente);
+				break;
 			}
-
-		} while (escolha != 3);
+		}
 	}
 
 	// 1: MOVIMENTAÇÕES NA CONTA CLIENTE//
 	public void movimentacoesCliente(Conta cliente) {
+		do {
+			System.out.println("\nMovimentações da conta");
+			System.out.println("Escolha uma opção: ");
+			System.out.println("a. Saque.");
+			System.out.println("b. Depósito.");
+			System.out.println("c. Transferência.");
+			System.out.println("d. Extrato da conta.");
+			System.out.println("e. Voltar ao menu anterior.");
+			escolha = read.next().charAt(0);
 
-		System.out.println("\nMovimentações da conta");
-		System.out.println("Escolha uma opção: ");
-		System.out.println("a. Saque.");
-		System.out.println("b. Depósito.");
-		System.out.println("c. Transferência.");
-		System.out.println("d. Extrato da conta.");
-		System.out.println("e. Voltar ao menu anterior.");
-		System.out.println("f. Finalizar programa.");
-		escolha = read.next().charAt(0);
+			switch (escolha) {
 
-		switch (escolha) {
+			case 'a':
 
-		case 'a':
+				System.out.println("Digite o valor que deseja sacar: ");
+				double valorSaque = read.nextDouble();
+				cliente.sacar(valorSaque);
+				break;
 
-			System.out.println("Digite o valor que deseja sacar: ");
-			double valorSaque = read.nextDouble();
-			cliente.sacar(valorSaque);
-			menuCliente(cliente);
-			break;
+			case 'b':
 
-		case 'b':
+				System.out.println("Digite o valor que deseja depositar: ");
+				double valorDeposito = read.nextDouble();
+				cliente.depositar(valorDeposito);
+				break;
 
-			System.out.println("Digite o valor que deseja depositar: ");
-			double valorDeposito = read.nextDouble();
-			cliente.depositar(valorDeposito);
-			menuCliente(cliente);
+			case 'c':
+				System.out.println("Digite o valor que deseja transferir");
+				double valorTransferencia = read.nextDouble();
+				System.out.println("Para quem deseja transferir?");
+				break;
 
-			break;
+			case 'd':
+				System.out.println("Extrato da conta");
+				cliente.extrato();
+				break;
 
-		case 'c':
-			System.out.println("Digite o valor que deseja transferir");
-			double valorTransferencia = read.nextDouble();
-			System.out.println("Para quem deseja transferir?");
-			// Conta nome = read.nextLine();
-			// cliente.transferir(valorTransferencia, nome);
-			break;
+			case 'e':
+				atualizacaoConta();
+				break;
 
-		case 'd':
-			System.out.println("Extrato da conta");
-			cliente.extrato();
-			break;
 
-		case 'e':
-			menuCliente(cliente);
-			break;
-
-		case 'f':
-			System.out.println("Programa finalizado.");
-			break;
-
-		default:
-			System.out.println("Opção inválida!");
-			movimentacoesCliente(cliente);
-		}
-
+			default:
+				System.out.println("Opção inválida!");
+				movimentacoesCliente(cliente);
+			}
+		} while (escolha != 'e');
 	}
 
 	// 2: RELATÓRIOS CLIENTE //
 	public void relatoriosCliente(Conta cliente) {
+		do {
+			System.out.println("\nRelatórios");
+			System.out.println("Escolha uma opção: ");
+			System.out.println("a. Saldo.");
+			System.out.println("b. Relatório de tributação da conta corrente.");
+			System.out.println("c. Relatório de Rendimento da poupança.");
+			System.out.println("d. Relatório de Seguro.");
+			System.out.println("e. Voltar ao menu anterior.");
+			System.out.println("f. Sair.");
+			escolha = read.next().charAt(0);
 
-		System.out.println("\nRelatórios");
-		System.out.println("Escolha uma opção: ");
-		System.out.println("a. Saldo.");
-		System.out.println("b. Relatório de tributação da conta corrente.");
-		System.out.println("c. Relatório de Rendimento da poupança.");
-		System.out.println("d. Relatório de Seguro.");
-		System.out.println("e. Voltar ao menu anterior.");
-		System.out.println("f. Sair.");
-		escolha = read.next().charAt(0);
+			switch (escolha) {
 
-		switch (escolha) {
+			case 'a':
 
-		case 'a':
+				System.out.println("Saldo atual:");
+				System.out.println(cliente.getSaldo());
+				break;
 
-			System.out.println("Saldo atual:");
-			System.out.println(cliente.getSaldo());
-			break;
+			case 'b':
+				try {
+					System.out.println("Relatório de Rendimento Conta Corrente");
+					((ContaCorrente) cliente).OlharRelatorio();
+				} catch (ClassCastException e) {
+					System.out.println("essa conta não é corrente");
 
-		case 'b':
-			try {
-				System.out.println("Relatório de Rendimento Conta Corrente");
-				((ContaCorrente) cliente).OlharRelatorio();
-			} catch (ClassCastException e) {
-				System.out.println("essa conta não é corrente");
+				} finally {
+					menuCliente(cliente);
+				}
 
-			} finally {
+				break;
+
+			case 'c':
+				try {
+					System.out.println("Relatório de Rendimento da poupança");
+					((ContaPoupanca) cliente).geraRelatorioRendimento();
+				} catch (ClassCastException e) {
+					System.out.println("essa conta não é poupança");
+				} finally {
+					menuCliente(cliente);
+				}
+				break;
+
+			case 'd':
+				System.out.println("Relatório de Seguro não disponível.");
+				break;
+
+			case 'e':
 				menuCliente(cliente);
+				break;
+
+			case 'f':
+				System.out.println("Programa finalizado.");
+				break;
+
+			default:
+				System.out.println("Opção inválida!");
+				relatoriosCliente(cliente);
 			}
-
-			break;
-
-		case 'c':
-			try {
-				System.out.println("Relatório de Rendimento da poupança");
-				((ContaPoupanca) cliente).geraRelatorioRendimento();
-			} catch (ClassCastException e) {
-				System.out.println("essa conta não é poupança");
-			} finally {
-				menuCliente(cliente);
-			}
-			break;
-
-		case 'd':
-			System.out.println("Relatório de Seguro não disponível.");
-			break;
-
-		case 'e':
-			menuCliente(cliente);
-			break;
-
-		case 'f':
-			System.out.println("Programa finalizado.");
-			break;
-
-		default:
-			System.out.println("Opção inválida!");
-			relatoriosCliente(cliente);
-		}
+		} while (escolha != 'f');
 
 	}
 
@@ -231,6 +225,7 @@ public class Menu /* implements Comparable<Pessoa> */ {
 			case '3':
 
 				System.out.println("Programafinalizado. \n");
+				atualizacaoConta();
 				break;
 
 			default:
@@ -278,8 +273,6 @@ public class Menu /* implements Comparable<Pessoa> */ {
 			System.out.println("Digite o valor que deseja transferir");
 			double valorTransferencia = read.nextDouble();
 			System.out.println("Para quem deseja transferir?");
-			// Conta nome = read.nextLine();
-			// gerente.transferir(valorTransferencia, nome);
 			break;
 
 		case 'd':
@@ -293,6 +286,7 @@ public class Menu /* implements Comparable<Pessoa> */ {
 
 		case 'f':
 			System.out.println("Programa finalizado.");
+			atualizacaoConta();
 			break;
 
 		default:
@@ -300,7 +294,8 @@ public class Menu /* implements Comparable<Pessoa> */ {
 			movimentacoesGerente(gerente);
 
 		}
-
+		while (escolha != 'f')
+			;
 	}
 
 	// 2:RELATÓRIOS GERENTE //
@@ -380,7 +375,8 @@ public class Menu /* implements Comparable<Pessoa> */ {
 			System.out.println("Opção inválida! \n");
 			relatoriosGerente(gerente);
 		}
-
+		while (escolha != 'f')
+			;
 	}
 
 	// ------------------------------------------//
@@ -409,6 +405,7 @@ public class Menu /* implements Comparable<Pessoa> */ {
 		case '3':
 
 			System.out.println("Programafinalizado. \n");
+			atualizacaoConta();
 			break;
 
 		default:
@@ -456,8 +453,6 @@ public class Menu /* implements Comparable<Pessoa> */ {
 			System.out.println("Digite o valor que deseja transferir");
 			double valorTransferencia = read.nextDouble();
 			System.out.println("Para quem deseja transferir?");
-			// Conta nome = read.nextLine();
-			// gerente.transferir(valorTransferencia, nome);
 			break;
 
 		case 'd':
@@ -471,6 +466,7 @@ public class Menu /* implements Comparable<Pessoa> */ {
 
 		case 'f':
 			System.out.println("Programa finalizado.");
+			atualizacaoConta();
 			break;
 
 		default:
@@ -478,6 +474,8 @@ public class Menu /* implements Comparable<Pessoa> */ {
 			movimentacoesDiretor(diretor);
 
 		}
+		while (escolha != 'f')
+			;
 
 	}
 
@@ -541,8 +539,6 @@ public class Menu /* implements Comparable<Pessoa> */ {
 
 			for (Conta p : listaCliente) {
 
-				// listaCliente.sort(Comparator.comparing(null, null));
-
 				System.out.println(p);
 			}
 
@@ -555,13 +551,15 @@ public class Menu /* implements Comparable<Pessoa> */ {
 
 		case 'f':
 			System.out.println("Programa finalizado.");
+			atualizacaoConta();
 			break;
 
 		default:
 			System.out.println("Opção inválida! \n");
 			relatoriosDiretor(diretor);
 		}
-
+		while (escolha != 'f')
+			;
 	}
 
 	// ------------------------------------------//
@@ -587,9 +585,13 @@ public class Menu /* implements Comparable<Pessoa> */ {
 			break;
 
 		case '3':
+			System.out.println("Sistema encerrado");
+			atualizacaoConta();
 			break;
 
 		}
+		while (escolha != '3')
+			;
 	}
 
 	// 1: MOVIMENTAÇÕES NA CONTA Presidente//
@@ -627,9 +629,18 @@ public class Menu /* implements Comparable<Pessoa> */ {
 		case 'c':
 			System.out.println("Digite o valor que deseja transferir");
 			double valorTransferencia = read.nextDouble();
-			presidente.transferir(100.00, presidente);
-			menuPresidente(presidente);
-			break;
+			System.out.println("Escolha o destinatario: ");
+			String destinatario = read.next();
+			for (int i = 0; i < listaCliente.size(); i++) {
+				String cpfList = listaCliente.get(i).getTitular().getCpf();
+				if (destinatario.equals(cpfList)) {
+					Conta destinatario2 = listaCliente.get(i);
+					presidente.transferir(valorTransferencia, destinatario2);
+					menuPresidente(presidente);
+					break;
+					
+				}
+			}
 
 		case 'd':
 			presidente.extrato();
@@ -641,6 +652,7 @@ public class Menu /* implements Comparable<Pessoa> */ {
 			break;
 		case 'f':
 			System.out.println("Programa finalizado !");
+			atualizacaoConta();
 			break;
 
 		default:
@@ -718,13 +730,15 @@ public class Menu /* implements Comparable<Pessoa> */ {
 
 		case 'g':
 			System.out.println("Programa finalizado.");
+			atualizacaoConta();
 			break;
 
 		default:
 			System.out.println("Opção inválida! \n");
 			relatoriosPresidente(presidente);
 		}
-
+		while (escolha != 'g')
+			;
 	}
 
 	// ------------------------------------------//
@@ -851,7 +865,7 @@ public class Menu /* implements Comparable<Pessoa> */ {
 		}
 	}
 
-	public void atualizaçãoConta() {
+	public void atualizacaoConta() {
 
 		String path = "C:\\TrabalhoFinalPOO\\pessoas\\Pessoas.txt\\";
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
