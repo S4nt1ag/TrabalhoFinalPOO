@@ -9,7 +9,7 @@ public class Diretor extends Gerente {
 
 	@Override
 	public String toString() {
-		return "Diretor [nome=" + nome + ", cpf=" + cpf + ", senha=" + senha + ", tipo=" + tipo + "]";
+		return ", nome: " + nome + ", cpf: " + cpf + ", tipo: " + tipo;
 	}
 
 }

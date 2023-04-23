@@ -62,6 +62,10 @@ public abstract class Conta implements Aplicacao {
 	public boolean depositar(double valor) {
 		return false;
 	}
+	
+	public boolean transferido(double valor) {
+		return false;
+	}
 
 	public boolean transferir(double valor, Conta contaDestino) {
 		return false;
@@ -79,7 +83,8 @@ public abstract class Conta implements Aplicacao {
 	
 	@Override
 	public String toString() {
-		return "Conta [numero=" + numero + ", titular=" + titular + ", saldo=" + saldo + ", tipo=" + tipo + "]";
+		return    "--------------------------------------------------------------------------------------------\n" 
+				+ "numero: " + numero  + titular + ", saldo: " + saldo + ", tipo: " + tipo ;
 	}
 
 	public void relatorio(Double valorSaque, Double valorDeposito, Double valorTransferenciaRemetente) {

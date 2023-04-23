@@ -91,6 +91,14 @@ public class ContaPoupanca extends Conta {
 		}
 
 	}
+	public boolean transferido(double valor) {
+		if (valor <= 0) {
+			return false;
+		} else {
+			this.saldo += valor;
+			return true;
+		}
+	}
 
 	public boolean transferir(double valor, Conta destino) {
 
@@ -103,7 +111,7 @@ public class ContaPoupanca extends Conta {
 		} else {
 			double valorTransferencia = valor;
 			this.saldo -= valorTransferencia;
-			destino.depositar(valor);
+			destino.transferido(valor);
 			System.out.println("Transferência realizada com sucesso!");
 			System.out.println("Data: " + sdf.format(date));
 			contaP.add(sdf.format(date) + " Tranferencia " + valor);
@@ -127,7 +135,7 @@ public class ContaPoupanca extends Conta {
 		
 		try {
 			
-	        FileWriter arq = new FileWriter(".//relatorios//relatorioContaPoupanca" + sdf.format(date) + ".txt");
+	        FileWriter arq = new FileWriter(".//relatorios//relatorioContaPoupanca"+ titular.getNome() + sdf.format(date) + ".txt");
 	        PrintWriter gravarArq = new PrintWriter(arq);
 	        
 	        gravarArq.println("----------- RELATÓRIO POUPANÇA -----------\n");
@@ -140,7 +148,6 @@ public class ContaPoupanca extends Conta {
 	        gravarArq.printf("             Rendimento: R$ %.2f%n", rendimento);
 	        	        
 	        arq.close();
-	        System.out.println("Relatório gerado!");
 	        
 	    } catch (IOException e) {
 	        System.out.println(" " + e.getMessage());
@@ -150,7 +157,8 @@ public class ContaPoupanca extends Conta {
 
 	@Override
 	public String toString() {
-		return "ContaPoupanca [numero=" + numero + ", titular=" + titular + ", saldo=" + saldo + ", tipo=" + tipo + "]";
+		return    "--------------------------------------------------------------------------------------------\n" 
+				+ "numero: " + numero +  titular + ", saldo: " + saldo + ", tipo: " + tipo;
 	}
 
 }

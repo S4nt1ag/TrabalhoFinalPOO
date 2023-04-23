@@ -13,7 +13,7 @@ public class Cliente extends Pessoa {
 	
 	@Override
 	public String toString() {
-		return "Cliente [nome=" + nome + ", cpf=" + cpf + ", senha=" + senha + ", tipo=" + tipo + "]";
+		return ", nome: " + nome + ", cpf: " + cpf + ", tipo: " + tipo;
 	}
 
 }

@@ -10,7 +10,7 @@ public class Gerente extends Funcionario {
 
 	@Override
 	public String toString() {
-		return "Gerente [nome=" + nome + ", cpf=" + cpf + ", senha=" + senha + ", tipo=" + tipo + "]";
+		return ", nome: " + nome + ", cpf: " + cpf + ", tipo: " + tipo;
 	}
 
 }

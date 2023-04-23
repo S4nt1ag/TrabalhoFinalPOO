@@ -70,6 +70,15 @@ public class ContaCorrente extends Conta {
 			return true;
 		}
 	}
+	public boolean transferido(double valor) {
+		if (valor <= 0) {
+			return false;
+		} else {
+			this.saldo += valor;
+			this.totalGasto += TAXA_DEPOSITO;
+			return true;
+		}
+	}
 
 	/* c. TRANSFERÊNCIA */
 	public boolean transferir(double valor, Conta destino) {
@@ -83,7 +92,7 @@ public class ContaCorrente extends Conta {
 		} else {
 			double valorTransferencia = valor;
 			this.saldo -= (valorTransferencia + TAXA_TRANSFERENCIA);
-			destino.depositar(valor);
+			destino.transferido(valor);
 			this.totalGasto += valor;
 			this.totalTaxa += TAXA_TRANSFERENCIA;
 			System.out.println("Transferência realizada com sucesso!");
@@ -123,7 +132,7 @@ public class ContaCorrente extends Conta {
 
 		try {
 
-			FileWriter arq = new FileWriter(".//relatorios//relatorioContaCorrente" + sdf.format(date) + ".txt");
+			FileWriter arq = new FileWriter(".//relatorios//relatorioContaCorrente" + titular.getNome() + sdf.format(date) + ".txt");
 			PrintWriter gravarArq = new PrintWriter(arq);
 
 			gravarArq.println("----------- RELATÓRIO DE TRIBUTAÇÃO DE CONTA CORRENTE -----------\n");
@@ -136,7 +145,6 @@ public class ContaCorrente extends Conta {
 
 			arq.close();
 
-			System.out.println("Relatório em .txt gerado com sucesso!");
 
 		} catch (IOException e) {
 			System.out.println(" " + e.getMessage());
@@ -155,7 +163,8 @@ public class ContaCorrente extends Conta {
 
 	@Override
 	public String toString() {
-		return "ContaCorrente [numero=" + numero + ", titular=" + titular + ", saldo=" + saldo + ", tipo=" + tipo + "]";
+		return    "--------------------------------------------------------------------------------------------\n" 
+				+ "numero: " + numero + titular + ", saldo: " + saldo + ", tipo: " + tipo;
 	}
 
 }
