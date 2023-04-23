@@ -27,7 +27,7 @@ import utilities.Clear;
 public class Menu {
 
 	ArrayList<Conta> listaCliente = new ArrayList<Conta>();
-	
+
 	Clear c = new Clear();
 	List<Conta> a1 = new ArrayList<Conta>();
 	List<Conta> a2 = new ArrayList<Conta>();
@@ -1329,35 +1329,46 @@ public class Menu {
 
 				line = br.readLine();
 			}
-			Scanner scanner = new Scanner(System.in);
-			System.out.println("Digite seu CPF: ");
-			String input_cpf = scanner.nextLine();
+			int encontrei = 1;
+			do {
+				Scanner scanner = new Scanner(System.in);
+				System.out.println("Digite seu CPF: ");
+				String input_cpf = scanner.next();
 
-			System.out.println("Digite sua senha: ");
-			int input_senha = scanner.nextInt();
+				System.out.println("Digite sua senha: ");
+				int input_senha = scanner.nextInt();
 
-			for (int i = 0; i < listaCliente.size(); i++) {
-				String cpfLista = listaCliente.get(i).getTitular().getCpf();
-				int senhaLista = listaCliente.get(i).getTitular().getSenha();
-				Cargo cargoLista = listaCliente.get(i).getTitular().getTipo();
+				for (int i = 0; i < listaCliente.size(); i++) {
+					String cpfLista = listaCliente.get(i).getTitular().getCpf();
+					int senhaLista = listaCliente.get(i).getTitular().getSenha();
+					Cargo cargoLista = listaCliente.get(i).getTitular().getTipo();
 
-				if (cpfLista.equals(input_cpf) && senhaLista == input_senha) {
-					switch (cargoLista) {
-					case CLIENTE:
-						menuCliente(listaCliente.get(i));
+					if (cpfLista.equals(input_cpf) && senhaLista == input_senha) {
+
+						switch (cargoLista) {
+						case CLIENTE:
+							menuCliente(listaCliente.get(i));
+							encontrei += 1;
+							break;
+						case GERENTE:
+							menuGerente(listaCliente.get(i));
+							encontrei += 1;
+							break;
+						case DIRETOR:
+							menuDiretor(listaCliente.get(i));
+							encontrei += 1;
+							break;
+						case PRESIDENTE:
+							menuPresidente(listaCliente.get(i));
+							encontrei += 1;
+							break;
+						}
 						break;
-					case GERENTE:
-						menuGerente(listaCliente.get(i));
-						break;
-					case DIRETOR:
-						menuDiretor(listaCliente.get(i));
-					case PRESIDENTE:
-						menuPresidente(listaCliente.get(i));
 					}
-
-					break;
 				}
-			}
+				encontrei -= 1;
+				System.out.println("Senha ou Cpf incorretos");
+			} while (encontrei != 1);
 
 		} catch (Exception e) {
 			System.out.println("Error: linha invalida" + e.getMessage());
