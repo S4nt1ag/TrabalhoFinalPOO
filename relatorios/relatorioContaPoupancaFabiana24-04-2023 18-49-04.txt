@@ -1,0 +1,16 @@
+----------- RELATÓRIO POUPANÇA -----------
+
+             Saldo: R$ 900,00
+
+----------- SIMULADOR DE RENDIMENTOS POUPANÇA -----------
+
+             Valor Aplicado : R$ 1000,00
+             Quantidade de dias: 60
+             Montante ao final do período : R$ 1016,53
+             Rendimento: R$ 16,53
+
+-----------Extrato atual de conta poupanca-----
+
+Agência: A2     conta: 10
+Cliente: Fabiana
+24-04-2023 18-49-04 Depósito 100.0

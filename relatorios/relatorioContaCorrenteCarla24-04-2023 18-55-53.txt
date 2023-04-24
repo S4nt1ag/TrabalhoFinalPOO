@@ -1,0 +1,16 @@
+----------- RELATÓRIO DE TRIBUTAÇÃO DE CONTA CORRENTE -----------
+
+            Saldo: R$ 1898,80
+            Total gasto em operações: R$ 100,00
+
+----------- TAXAS DE TRANSAÇÃO -----------------------------------
+
+            Taxa de saque: R$ 0.1
+            Taxa de depósito: R$ 0.1
+            Taxa de transferência: R$ 0.2
+
+----------------Extrato atual de conta Corrente----------------------
+
+Agência: A3     conta: 7
+Cliente: Carla
+24-04-2023 18-55-53 Transferência 100.0
