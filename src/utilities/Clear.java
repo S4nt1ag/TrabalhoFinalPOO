@@ -10,7 +10,7 @@ public class Clear {
 	}
 	
 	public void clUp() {
-		for (int i = 0; i < 30; i++) {
+		for (int i = 0; i < 15; i++) {
 			System.out.println();
 		}
 	}

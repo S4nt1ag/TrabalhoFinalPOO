@@ -99,7 +99,7 @@ public class ContaCorrente extends Conta {
 			this.totalTaxa += TAXA_TRANSFERENCIA;
 			System.out.println("Transferência realizada com sucesso!");
 			System.out.println("Data: " + sdf.format(date));
-			contaC.add(sdf.format(date) + " Tranferencia " + valor);
+			contaC.add(sdf.format(date) + " Transferência " + valor);
 			return true;
 		}
 		return false;

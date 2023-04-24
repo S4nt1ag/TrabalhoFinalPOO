@@ -169,13 +169,15 @@ public class Menu {
 				System.out.println();
 				System.out.println("Digite o valor que deseja transferir");
 				double valorTransferencia = read.nextDouble();
-				System.out.println("Escolha o destinatario: ");
+				System.out.println("Escolha o destinatário: ");
 				String destinatario = read.next();
 				for (int i = 0; i < listaCliente.size(); i++) {
 					String cpfList = listaCliente.get(i).getTitular().getCpf();
 					if (destinatario.equals(cpfList)) {
 						Conta destinatario2 = listaCliente.get(i);
 						cliente.transferir(valorTransferencia, destinatario2);
+						
+						
 						try {
 							((ContaCorrente) destinatario2).relatorio();
 						} catch (ClassCastException e) {
@@ -187,8 +189,14 @@ public class Menu {
 						}
 						break;
 
+					} else {
+						System.out.println("Titular não encontrado!");
+						movimentacoesCliente(cliente);
+						break;
 					}
+					
 				}
+			
 				c.clUp();
 				System.out.println("digite 's' para continuar");
 				read.next();
@@ -374,8 +382,8 @@ public class Menu {
 				break;
 
 			case '3':
-
 				System.out.println("Programafinalizado. \n");
+				
 				try {
 					((ContaCorrente) gerente).relatorio();
 				} catch (ClassCastException e) {
@@ -683,8 +691,8 @@ public class Menu {
 				break;
 
 			case '3':
-
 				System.out.println("Programa finalizado. \n");
+				
 				try {
 					((ContaCorrente) diretor).relatorio();
 				} catch (ClassCastException e) {
@@ -998,6 +1006,7 @@ public class Menu {
 
 			case '3':
 				System.out.println("Sistema encerrado");
+				
 				try {
 					((ContaCorrente) presidente).relatorio();
 				} catch (ClassCastException e) {

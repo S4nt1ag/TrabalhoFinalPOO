@@ -91,12 +91,13 @@ public class ContaPoupanca extends Conta {
 		}
 
 	}
+	
 	public boolean transferido(double valor) {
 		if (valor <= 0) {
 			return false;
 		} else {
 			this.saldo += valor;
-			contaP.add(sdf.format(date) + " Tranferido " + valor);
+			contaP.add(sdf.format(date) + " Transferência " + valor);
 			return true;
 		}
 	}
@@ -115,7 +116,7 @@ public class ContaPoupanca extends Conta {
 			destino.transferido(valor);
 			System.out.println("Transferência realizada com sucesso!");
 			System.out.println("Data: " + sdf.format(date));
-			contaP.add(sdf.format(date) + " Tranferencia " + valor);
+			contaP.add(sdf.format(date) + " Tranferência " + valor);
 			return true;
 		}
 		return false;
