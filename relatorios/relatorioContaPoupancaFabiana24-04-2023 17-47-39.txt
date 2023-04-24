@@ -1,0 +1,15 @@
+----------- RELATÓRIO POUPANÇA -----------
+
+             Saldo: R$ 800,00
+
+----------- SIMULADOR DE RENDIMENTOS POUPANÇA -----------
+
+             Valor Aplicado : R$ 200,00
+             Quantidade de dias: 16
+             Montante ao final do período : R$ 200,88
+             Rendimento: R$ 0,88
+
+-----------Extrato atual de conta poupanca-----
+
+Agência: A2     conta: 10
+Cliente: Fabiana

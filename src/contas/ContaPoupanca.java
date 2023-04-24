@@ -55,6 +55,13 @@ public class ContaPoupanca extends Conta {
 		montante = valorAplicado*(Math.pow((1+TAXA_RENDIMENTO),diasInvestidos));
 		rendimento = montante - valorAplicado;
 		
+		 System.out.println("----------- SIMULADOR DE RENDIMENTOS POUPANÇA -----------\n");
+		 System.out.printf("             Valor Aplicado : R$ %.2f%n", valorAplicado);
+		 System.out.printf("             Quantidade de dias: %d%n", diasInvestidos);
+		 System.out.printf("             Montante ao final do período : R$ %.2f%n", montante);
+		 System.out.printf("             Rendimento: R$ %.2f%n", rendimento);
+		 System.out.println();
+		
 		return rendimento;
 		
 	}
