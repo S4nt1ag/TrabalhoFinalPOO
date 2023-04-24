@@ -176,6 +176,15 @@ public class Menu {
 					if (destinatario.equals(cpfList)) {
 						Conta destinatario2 = listaCliente.get(i);
 						cliente.transferir(valorTransferencia, destinatario2);
+						try {
+							((ContaCorrente) destinatario2).relatorio();
+						} catch (ClassCastException e) {
+
+						}
+						try {
+							((ContaPoupanca) destinatario2).relatorio();
+						} catch (ClassCastException e) {
+						}
 						break;
 
 					}
@@ -468,8 +477,17 @@ public class Menu {
 					if (destinatario.equals(cpfList)) {
 						Conta destinatario2 = listaCliente.get(i);
 						gerente.transferir(valorTransferencia, destinatario2);
-						break;
+						try {
+							((ContaCorrente) destinatario2).relatorio();
+						} catch (ClassCastException e) {
 
+						}
+						try {
+							((ContaPoupanca) destinatario2).relatorio();
+						} catch (ClassCastException e) {
+						}
+						break;
+						
 					}
 				}
 				c.clUp();
@@ -768,6 +786,15 @@ public class Menu {
 					if (destinatario.equals(cpfList)) {
 						Conta destinatario2 = listaCliente.get(i);
 						diretor.transferir(valorTransferencia, destinatario2);
+						try {
+							((ContaCorrente) destinatario2).relatorio();
+						} catch (ClassCastException e) {
+
+						}
+						try {
+							((ContaPoupanca) destinatario2).relatorio();
+						} catch (ClassCastException e) {
+						}
 						break;
 
 					}
@@ -1068,6 +1095,15 @@ public class Menu {
 					if (destinatario.equals(cpfList)) {
 						Conta destinatario2 = listaCliente.get(i);
 						presidente.transferir(valorTransferencia, destinatario2);
+						try {
+							((ContaCorrente) destinatario2).relatorio();
+						} catch (ClassCastException e) {
+
+						}
+						try {
+							((ContaPoupanca) destinatario2).relatorio();
+						} catch (ClassCastException e) {
+						}
 						break;
 
 					}

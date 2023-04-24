@@ -1,6 +1,6 @@
 ----------- RELATÓRIO POUPANÇA -----------
 
-             Saldo: R$ 500,00
+             Saldo: R$ 707,00
 
 ----------- SIMULADOR DE RENDIMENTOS POUPANÇA -----------
 
@@ -8,3 +8,9 @@
              Quantidade de dias: 0
              Montante ao final do período : R$ 0,00
              Rendimento: R$ 0,00
+
+-----------Extrato atual de conta poupanca-----
+
+Agência: A1     conta: 6
+Cliente: Bruno
+24-04-2023 15-14-05 Tranferido 200.0

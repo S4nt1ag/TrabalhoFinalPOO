@@ -71,11 +71,13 @@ public class ContaCorrente extends Conta {
 		}
 	}
 	public boolean transferido(double valor) {
+		
 		if (valor <= 0) {
 			return false;
 		} else {
 			this.saldo += valor;
 			this.totalGasto += TAXA_DEPOSITO;
+			contaC.add(sdf.format(date) + " Tranferido " + valor);
 			return true;
 		}
 	}
@@ -117,7 +119,7 @@ public class ContaCorrente extends Conta {
 	public void extrato() {
 
 		System.out.println("Extrato atual de conta corrente");
-		System.out.println("Agência: " + "1" + "     Conta: " + getNumero());
+		System.out.println("Agência: " + getAgencia() + "     Conta: " + getNumero());
 		System.out.println("Cliente: " + ((Pessoa) (titular)).getNome());
 
 		for (String i : contaC) {
@@ -142,6 +144,14 @@ public class ContaCorrente extends Conta {
 			gravarArq.println("            Taxa de saque: R$ " + ContaCorrente.TAXA_SAQUE);
 			gravarArq.println("            Taxa de depósito: R$ " + ContaCorrente.TAXA_DEPOSITO);
 			gravarArq.println("            Taxa de transferência: R$ " + ContaCorrente.TAXA_TRANSFERENCIA);
+			gravarArq.println();
+			gravarArq.println("----------------Extrato atual de conta Corrente----------------------");
+			gravarArq.println();
+	        gravarArq.println("Agência: " + getAgencia() + "     conta: " + getNumero());
+	        gravarArq.println("Cliente: " + ((Pessoa) (titular)).getNome());
+	        for (String i : contaC) {
+				gravarArq.println(i);
+			}
 
 			arq.close();
 

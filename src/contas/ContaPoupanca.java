@@ -96,6 +96,7 @@ public class ContaPoupanca extends Conta {
 			return false;
 		} else {
 			this.saldo += valor;
+			contaP.add(sdf.format(date) + " Tranferido " + valor);
 			return true;
 		}
 	}
@@ -123,7 +124,7 @@ public class ContaPoupanca extends Conta {
 	public void extrato() {
 
 		System.out.println("Extrato atual de conta poupanca");
-		System.out.println("Agência: " + "1" + "     conta: " + getNumero());
+		System.out.println("Agência: " + getAgencia() + "     conta: " + getNumero());
 		System.out.println("Cliente: " + ((Pessoa) (titular)).getNome());
 		for (String i : contaP) {
 			System.out.println(i);
@@ -146,6 +147,14 @@ public class ContaPoupanca extends Conta {
 	        gravarArq.printf("             Quantidade de dias: %d%n", diasInvestidos);
 	        gravarArq.printf("             Montante ao final do período : R$ %.2f%n", montante);
 	        gravarArq.printf("             Rendimento: R$ %.2f%n", rendimento);
+	        gravarArq.println();
+	        gravarArq.println("-----------Extrato atual de conta poupanca-----");
+	        gravarArq.println();
+	        gravarArq.println("Agência: " + getAgencia() + "     conta: " + getNumero());
+	        gravarArq.println("Cliente: " + ((Pessoa) (titular)).getNome());
+	        for (String i : contaP) {
+				gravarArq.println(i);
+			}
 	        	        
 	        arq.close();
 	        
